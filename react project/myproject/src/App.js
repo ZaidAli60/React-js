@@ -6,10 +6,11 @@ import Resdential from "./components/Residential";
 
 import Submitform from "./components/submit"
 import "./App.css"
-
+import Parent from "./component2/parent"
 function App() {
   return (
     <div className="mainfile">
+      <Parent />
       {/* <Header /> */}
       {/* <h1>React js</h1>
       <p>Learn the react js</p>
