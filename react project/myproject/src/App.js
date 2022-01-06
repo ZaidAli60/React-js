@@ -1,14 +1,26 @@
-import Header from "./components/header";
-import Footer from "./components/footer";
+// import Header from "./components/header";
+// import Footer from "./components/footer";
 
+import PersonalInformation from "./components/personal";
+import Resdential from "./components/Residential";
+import Submitform from "./components/submit"
 
 function App() {
   return (
     <div>
-      <Header />
+      {/* <Header />
       <h1>React js</h1>
       <p>Learn the react js</p>
-      <Footer />
+      <Footer /> */}
+      <h1>Sign in Form</h1>
+      <h1>J.K.M.B Mallick High School</h1>
+      <h2>Admission Form    </h2>
+      <hr/>
+      <PersonalInformation />
+      <Resdential />
+      <Submitform />
+
+
     </div>
   );
 }
