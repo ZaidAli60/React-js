@@ -1,8 +1,8 @@
-
+import "./submit.css"
 
 function Submitform() {
     return(   
-        <div>
+        <div className="submit">
              <form action="">
                     <h1>Academic Information</h1>
                       QUALIFICATION:
@@ -27,6 +27,8 @@ function Submitform() {
                    
                     <input type="reset" value="Reset"/>
                     <input type="submit" value="Submit"/>
+                   
+
                 </form>
                 </form>
         </div>

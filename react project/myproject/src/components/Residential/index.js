@@ -1,8 +1,8 @@
 
-
+import "./residential.css"
 function Resdential() {
     return(
-        <div>
+        <div className="residentail">
             <form action="">
                 
                     <h1>Residential Information</h1>
@@ -40,8 +40,10 @@ function Resdential() {
                             <input type="checkbox" name="service"
                             value="OTHER" /> OTHER
                            </p>
+
                         
                            </form>  
+                        
                 
         </div>
     )

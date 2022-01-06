@@ -1,6 +1,10 @@
 .App {
   text-align: center;
 }
+.mainfile{
+  text-align: center;
+  background-color: violet;
+}
 
 .App-logo {
   height: 40vmin;

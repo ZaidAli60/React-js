@@ -1,15 +1,17 @@
-// import Header from "./components/header";
+import Header from "./components/header";
 // import Footer from "./components/footer";
 
 import PersonalInformation from "./components/personal";
 import Resdential from "./components/Residential";
+
 import Submitform from "./components/submit"
+import "./App.css"
 
 function App() {
   return (
-    <div>
-      {/* <Header />
-      <h1>React js</h1>
+    <div className="mainfile">
+      {/* <Header /> */}
+      {/* <h1>React js</h1>
       <p>Learn the react js</p>
       <Footer /> */}
       <h1>Sign in Form</h1>

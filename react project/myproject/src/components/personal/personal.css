@@ -1,0 +1,10 @@
+.personalinfor{
+    text-align: center;
+    background-color: aqua;
+    height: 100vh;
+}
+
+.form,input{
+   /* width: 50%; */
+   height: 30px;
+}

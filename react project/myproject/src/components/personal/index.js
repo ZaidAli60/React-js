@@ -1,11 +1,12 @@
-
+import web from "../../assets/web.png"
+import "./personal.css"
 
  function PersonalInformation() {
     return (
-      <div>
+      <div className="personalinfor">
            <h1>Personal Information</h1>
-           
-   <form action="">
+           <img src={web} alt="test" />
+   <form action="" className="form">
        <p>NAME:
            <input type="text" name="username" size="30"
            maxlength="30" placeholder="Full Name"/>  </p>
