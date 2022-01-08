@@ -4,9 +4,9 @@ function Counter(props) {
     return(
         <div className="App">
             
-      <Button Data={props.sampleData} />
-      <Button Data2={props.sampleData2} />
-      <Button Data3={props.sampleData3} />
+      <Button Data={props.Data} />
+      <Button Data2={props.Data2} />
+      <Button Data3={props.Data3} />
         </div>
     )
 }
