@@ -9,7 +9,7 @@ function Parent() {
          
             <div>
             <FirstChild />
-            <Button title="Learn HTML TAGS" />
+            <Button color = "green" title="Learn HTML TAGS" />
 
             </div>
         </div>

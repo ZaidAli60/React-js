@@ -1,9 +1,12 @@
+import Button from "./button";
+
 function Thirdchild() {
     return (
         <div>
             
             Last child
-            <button>Learn HTML</button>
+            <Button color = "red" title="Learn HTML"/>
+            {/* <button color="red">Learn HTML</button> */}
             {/* <Button /> */}
         </div>
     )
