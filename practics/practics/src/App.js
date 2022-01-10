@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
   
-      <Counter Data={sampleData} Data2={sampleData2} Data3={sampleData3} />
+      <Counter Data={sampleData} Data2={sampleData2} Data3={sampleData3}/>
     </div>
   );
 }

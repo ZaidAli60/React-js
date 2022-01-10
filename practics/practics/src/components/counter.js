@@ -6,7 +6,7 @@ function Counter(props) {
             
       <Button Data={props.Data} />
       <Button Data2={props.Data2} />
-      <Button Data3={props.Data3} />
+      <Button Data3={props.Data3}/>
         </div>
     )
 }
