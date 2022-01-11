@@ -1,15 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
-import Header from './commonComponents/header';
+import LandingPage from './modules/landingpage';
+
+
 
 
 
 function App() {
   return (
     <div className="App">
-
-       <Header />
+       <LandingPage />
+       
+       
     </div>
   );
 }

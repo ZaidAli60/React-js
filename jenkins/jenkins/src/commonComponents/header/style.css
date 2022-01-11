@@ -1,1 +1,9 @@
-
+/* .items{
+    float: right !important;
+} */
+.nav-items{
+    opacity: 0.7;
+}
+.nav-items :hover {
+    color: white !important;
+}

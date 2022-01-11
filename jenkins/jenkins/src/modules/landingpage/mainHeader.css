@@ -1,0 +1,29 @@
+.displays{
+    display: flex ;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+.textContent > h1{
+    font-size: 5rem;
+    opacity: 0.7;
+}
+
+.textContent > h3{
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.7;
+
+}
+.btns > button{
+    padding: 7px 7px 7px 7px;
+}
+.btn1{
+    background-color: #6c757d !important;
+    color: white;
+    border: none;
+}
+.btn2{
+    color: white;
+    border: none;
+    background-color: #d24939 !important;
+}
