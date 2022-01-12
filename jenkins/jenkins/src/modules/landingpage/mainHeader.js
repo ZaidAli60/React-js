@@ -3,14 +3,16 @@ import "./mainHeader.css"
 function Mainheader() {
     return (
         <div>
+
+        <p></p>
             <div className="container ">
                 <div className="row ">
                    <div className="displays py-4">
-                   <div>
+                   <div className="">
                         <img src={jenkins} alt="jenkins" />
                     </div>
                     <div>
-                        <div className="textContent">
+                        <div className=" textContent">
                         <h1>Jenkins</h1>
                         <h3>Build great things at any scale</h3>
                         <p>The leading open source automation server,<br /> 

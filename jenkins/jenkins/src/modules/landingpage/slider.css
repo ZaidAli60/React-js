@@ -1,0 +1,17 @@
+.slider-img{
+    background-image: url("./../../assets/background-wide.jpg");
+
+    background-size:cover !important ;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 29rem;
+}
+
+.slider{
+    position: relative;
+}
+
+/* .con-control{
+    width: 100%;
+    height: 100px;
+} */

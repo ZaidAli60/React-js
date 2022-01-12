@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
+
 import LandingPage from './modules/landingpage';
 
 
@@ -10,9 +11,7 @@ import LandingPage from './modules/landingpage';
 function App() {
   return (
     <div className="App">
-       <LandingPage />
-       
-       
+      <LandingPage />
     </div>
   );
 }
