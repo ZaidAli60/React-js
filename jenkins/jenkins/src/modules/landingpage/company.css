@@ -1,0 +1,15 @@
+/* .pic1{
+    width: 11rem !important;
+}
+.pic2{
+   width: 10rem !important;
+   height: 7rem !important;
+} */
+.pics{
+    display: flex;
+    justify-content: space-between;
+}
+.pics2{
+    display: flex;
+    justify-content: center;
+}
