@@ -3,6 +3,7 @@ import Mainheader from "./mainHeader"
 import Slider from "./silder";
 import Watch from "./watch/watch"
 import Companys from "./companys";
+import Footer from "./../../commonComponents/footer/footer"
 function LandingPage() {
     return(
         <div>
@@ -11,6 +12,7 @@ function LandingPage() {
             <Slider />
             <Watch />
             <Companys />
+            <Footer />
         </div>
     )
 }

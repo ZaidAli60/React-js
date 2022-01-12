@@ -22,7 +22,7 @@ function Companys() {
                     <img className="img-fluid col-lg-3 col-md-4 col-sm-6" src={aws} alt="redhat" />
 
                 </div>
-                <div className="row pics2 ">
+                <div className="row pics2 py-4 ">
                 <img className="img-fluid col-lg-3 col-md-4 col-sm-6" src={github} alt="redhat" />
                 <img className="img-fluid col-lg-3 col-md-4 col-sm-6" src={jfrog} alt="redhat" />
                     
