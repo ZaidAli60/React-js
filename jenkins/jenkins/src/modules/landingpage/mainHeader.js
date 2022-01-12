@@ -21,8 +21,8 @@ function Mainheader() {
                             
                         </div>
                         <div className="btns ">
-                            <button className="me-2 btn btn1">Documentation</button>
-                            <button className="btn2 btn">Download</button>
+                            <button className="me-2 btn btn1 text-light">Documentation</button>
+                            <button className="btn2 btn text-light">Download</button>
                         </div>
                     </div>
                    </div>
