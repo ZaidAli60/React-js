@@ -7,6 +7,7 @@ function Student() {
     const [Students , setStudent] = useState(data);
     const [name, setname] = useState("");
     const [roll, setroll] = useState("");
+    const [classe, setclasse] = useState("");
     const [section, setsection] = useState("");
     const [batch, setbatch] = useState("");
  
@@ -15,11 +16,12 @@ function Student() {
             name,
             roll,
             section,
-            // classe : classe,
+            classe : classe,
             batch,
         }
 
-        // console.log(obj)
+        console.log(obj)
+        setStudent([...Students, obj])
     }
     
     return(
@@ -28,6 +30,7 @@ function Student() {
             <input type="text" placeholder='name' onChange={(e)=> setname(e.target.value)} />
             <input type="text" placeholder='roll' onChange={(e)=> setroll(e.target.value)} />
             <input type="text" placeholder='section'onChange={(e)=> setsection(e.target.value)} />
+            <input type="text" placeholder='class'onChange={(e)=> setclasse(e.target.value)} />
             <input type="text" placeholder='batch' onChange={(e)=> setbatch(e.target.value)} />
 
             <button type='submit' onClick={formHanlder}>Submit</button>
