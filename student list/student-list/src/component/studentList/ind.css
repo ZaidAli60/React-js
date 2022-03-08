@@ -1,9 +1,7 @@
  .abc{
-     /* border: 2px solid black; */
     text-align: center;
-   
-    /* align-items: center; */
  }
+
  .inputBox{
     text-align: center;
  }
@@ -19,4 +17,10 @@
      border: 2px solid black;
      border-collapse: collapse; 
  }
- 
+ /* .headings{
+     background-color: red;
+     color: white;
+     width: 200px;
+     display: flex !important;
+     justify-content: center !important;
+ } */

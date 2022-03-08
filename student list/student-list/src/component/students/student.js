@@ -1,17 +1,21 @@
 import React from 'react'
 import "./student.css"
-function Student(props, index) {
+function Student({studitems,index,deleteHand}) {
   return (
     <div>
       <table className="tableitem" >
         <tr>
-          <td>{props.index}</td>
-          <td>{props.studitems.name}</td>
-          <td>{props.studitems.rollNo}</td>
-          <td>{props.studitems.stuClass}</td>
-          <td>{props.studitems.batch}</td>
+          <td>{index}</td>
+          <td>{studitems.name}</td>
+          <td>{studitems.rollNo}</td>
+          <td>{studitems.stuClass}</td>
+          <td>{studitems.batch}</td>
+      
+     
         </tr>
+
       </table>
+      <button onClick={() => deleteHand(index)}>Delete</button>
     </div>
   )
 }
