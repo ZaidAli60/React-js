@@ -10,3 +10,7 @@
  .inp{
      width: 50% !important;
  }
+ .tableheading{
+     display: flex;
+     justify-content: space-between;
+ }
