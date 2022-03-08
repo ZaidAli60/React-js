@@ -14,3 +14,9 @@
      display: flex;
      justify-content: space-between;
  }
+ table > tr > th{
+     /* width: 20%; */
+     border: 2px solid black;
+     border-collapse: collapse; 
+ }
+ 
