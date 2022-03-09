@@ -12,43 +12,91 @@ function StudentList() {
     const [stuClass, setstuClass] = useState("");
     const [batch, setbatch] = useState("");
     const [errorMessage, seterrorMessage] = useState("");
+    const [flag, setflag] = useState(false);
+    const [updataIndex, setupdataIndex] = useState(0);
 
-   const deleteHandler =(index)=>{
+    const updataHandler = (studitems,index) => {
+        console.log("updataHandler", studitems)
+        setupdataIndex(index)
+        setname(studitems.name)
+        setrollNo(studitems.rollNo)
+        setstuClass(studitems.stuClass)
+        setbatch(studitems.batch)
+        setflag(true)
 
-    let newStud = studData.filter((item,i) =>{
-        if (i !== index) {
-            return item;
-        }
-    });
-    console.log("newStud" , newStud)
-    setstudData([...newStud])
-   }
+    }
+
+    const deleteHandler = (index) => {
+
+        let newStud = studData.filter((item, i) => {
+            if (i !== index) {
+                return item;
+            }
+        });
+        console.log("newStud", newStud)
+        setstudData([...newStud])
+    }
 
     const formSubmit = () => {
         seterrorMessage(null)
-        if (name !== "" && rollNo!== "" && stuClass !== "" && batch !== "") {
-            
-        
+        if (name !== "" && rollNo !== "" && stuClass !== "" && batch !== "") {
 
-        const obj = {
-            name,
-            rollNo,
-            stuClass,
-            batch,
+
+
+            const obj = {
+                name,
+                rollNo,
+                stuClass,
+                batch,
+            }
+            console.log(obj)
+            setstudData([...studData, obj])
+            setname("")
+            setrollNo("")
+            setstuClass("")
+            setbatch("")
+        } else {
+            seterrorMessage("Empty Value")
+
         }
-        console.log(obj)
-        setstudData([...studData, obj])
-        setname("")
-        setrollNo("")
-        setstuClass("")
-        setbatch("")
-    }else{
-        seterrorMessage("Empty Value")
-     
+
     }
-        
+
+    const updataFormSubmit = (studitems) => {
+        seterrorMessage(null)
+        if (name !== "" && rollNo !== "" && stuClass !== "" && batch !== "") {
+
+
+
+            let obj = {
+                name,
+                rollNo,
+                stuClass,
+                batch,
+            }
+            console.log(obj)
+
+            let updatastuList = studData.map((stu,index)=>{
+                if (updataIndex === index) {
+                    return obj;
+                }else{
+                    return stu;
+                }
+            })
+            setstudData([...updatastuList])
+            setname("")
+            setrollNo("")
+            setstuClass("")
+            setbatch("")
+            setflag(false)
+
+        } else {
+            seterrorMessage("Empty Value")
+
+        }
+      
     }
-  
+
 
 
     return (
@@ -65,7 +113,14 @@ function StudentList() {
                 <br />
                 <input type="text" value={batch} className='inp my-2' onChange={(e) => { setbatch(e.target.value) }} placeholder='Enter Your Batch' />
                 <br />
-                <button type="submit" onClick={formSubmit} class="btn btn-primary">Submit</button>
+                {
+                    flag ?
+                        <button type="submit" onClick={updataFormSubmit} class="btn btn-primary">Updata</button>
+                        :
+                        <button type="submit" onClick={formSubmit} class="btn btn-primary">Submit</button>
+
+                }
+                {/* <button type="submit" onClick={formSubmit} class="btn btn-primary">Submit</button> */}
             </div>
 
 
@@ -89,12 +144,12 @@ function StudentList() {
 
                 </table>
 
-                          
+
                 {
-                            studData.map((item,index) => {
-                                return (<Student studitems={item} index={index} deleteHand ={deleteHandler}/>)
-                            })
-                        }
+                    studData.map((item, index) => {
+                        return (<Student studitems={item} index={index} deleteHand={deleteHandler} updataHandler={updataHandler} />)
+                    })
+                }
 
 
 

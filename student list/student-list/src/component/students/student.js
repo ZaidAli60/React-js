@@ -1,6 +1,6 @@
 import React from 'react'
 import "./student.css"
-function Student({studitems,index,deleteHand}) {
+function Student({studitems,index,deleteHand,updataHandler}) {
   return (
     <div>
       <table className="tableitem" >
@@ -15,7 +15,8 @@ function Student({studitems,index,deleteHand}) {
         </tr>
 
       </table>
-      <button onClick={() => deleteHand(index)}>Delete</button>
+      <button class="btn bg-danger text-white"onClick={() => deleteHand(index)}>Delete</button>
+      <button class="btn bg-primary text-white"onClick={() => updataHandler(studitems,index)}>Updata</button>
     </div>
   )
 }
