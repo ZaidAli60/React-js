@@ -16,6 +16,7 @@ import NavigationBar from "../commonComponent/navigationBar/navigationBar";
       return (
           <div>
               <BrowserRouter>
+              <NavigationBar />
               {/* <LandingPages /> */}
                <Routes>
                   <Route path ="/" element ={<LandingPages />}/>

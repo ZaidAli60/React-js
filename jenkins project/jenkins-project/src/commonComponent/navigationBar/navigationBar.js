@@ -28,7 +28,7 @@ function NavigationBar() {
               navbarScroll
             >
         
-              <li ><Link to="blog">Blog</Link></li>
+              <li><Link to="blog">Blog</Link></li>
               <li><a href="#news">News</a></li>
               <li><a href="#home">Home</a></li>
               <li><a href="#news">News</a></li>
