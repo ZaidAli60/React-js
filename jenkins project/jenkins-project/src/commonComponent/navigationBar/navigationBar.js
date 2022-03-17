@@ -10,7 +10,7 @@ import {Button} from 'react-bootstrap';
 function NavigationBar() {
     return (
         <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar  fixed="top" bg="dark" variant="dark" expand="lg" >
                 <Container fluid>
                     <Navbar.Brand className = "fs-4 fw-bold" href="#">Jenkins</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
