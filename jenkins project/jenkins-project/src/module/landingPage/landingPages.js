@@ -15,11 +15,7 @@ function LandingPage() {
         <Slider />
         <Feature />
         <Watch />
-
-      
         <RecentBlogs />
-
-     
         <Companys />
         <Footer />
  
