@@ -1,0 +1,8 @@
+.pics{
+    display: flex;
+    justify-content: space-between;
+}
+.pics2{
+    display: flex;
+    justify-content: center;
+}

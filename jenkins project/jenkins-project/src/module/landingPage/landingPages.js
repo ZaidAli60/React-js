@@ -3,7 +3,7 @@ import Header from "../header/header";
 import Slider from "../slider/slider";
 import Feature from "../jenkinsFeature/feature";
 import Watch from "../watchVideo/watch";
-
+import Companys from "../company/company";
 
 
 function LandingPage() {
@@ -13,6 +13,7 @@ function LandingPage() {
         <Slider />
         <Feature />
         <Watch />
+        <Companys />
  
            
         
