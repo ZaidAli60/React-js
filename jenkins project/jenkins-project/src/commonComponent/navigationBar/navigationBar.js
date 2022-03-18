@@ -31,7 +31,7 @@ function NavigationBar() {
               <li><Link to="blog">Blog</Link></li>
               <li><Link to="document">Documentation</Link></li>
               <li><Link to="plugins">Plugins</Link></li>
-              <li><a href="#news">News</a></li>
+             
               <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
                 <div class="dropdown-content">
@@ -40,7 +40,7 @@ function NavigationBar() {
                   <a href="#">Link 3</a>
                 </div>
               </li>
-              <li><a href="#home">About</a></li>
+              <li><Link to="blog">About</Link></li>
               <li><a href="#news">English</a></li>
 
            
