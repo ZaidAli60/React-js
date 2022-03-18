@@ -24,10 +24,46 @@ function Plugins() {
             </div>
             <div className="jenkinsInfor">
                 <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            
+                    <div className="displayPlugins">
+                        <div className="my-5 col-lg-3 col-md-8 col-sm-12">
+                            <h5>Browse categories</h5>
+                            <div>Platforms</div>
+                            <div>User interface</div>
+                            <div>Administration</div>
+                            <div>Build management</div>
+                            <div>Source Code Management</div>
                         </div>
+
+                        <div className="my-5 col-lg-3 col-md-8 col-sm-12">
+                            <h5>Browse categories</h5>
+                            <div>Platforms</div>
+                            <div>User interface</div>
+                            <div>Administration</div>
+                            <div>Build management</div>
+                            <div>Source Code Management</div>
+                        </div>
+                        
+                        <div className="my-5 col-lg-3 col-md-8 col-sm-12">
+                            <h5>Browse categories</h5>
+                            <div>Platforms</div>
+                            <div>User interface</div>
+                            <div>Administration</div>
+                            <div>Build management</div>
+                            <div>Source Code Management</div>
+                        </div>
+                        
+                        <div className="my-5 col-lg-3 col-md-8 col-sm-12">
+                            <h5>Browse categories</h5>
+                            <div>Platforms</div>
+                            <div>User interface</div>
+                            <div>Administration</div>
+                            <div>Build management</div>
+                            <div>Source Code Management</div>
+                        </div>
+                        
+                        
+                      
+                  
                     </div>
                 </div>
             </div>

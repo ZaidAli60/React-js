@@ -17,4 +17,10 @@
     font-weight: bold;
 } */
 
-.jenkinsInfor
+.jenkinsInfor{
+    background-color: lightblue;
+}
+.displayPlugins{
+    display: flex;
+    flex-wrap: wrap;
+}
