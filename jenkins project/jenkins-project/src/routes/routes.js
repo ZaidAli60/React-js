@@ -11,6 +11,7 @@ import {
   import LandingPages from "../module/landingPage/landingPages"
 import NavigationBar from "../commonComponent/navigationBar/navigationBar";
 import Documentation from "../pages/documentation/documentation";
+import Plugins from "../pages/plugins/plugins";
 
 
   function Routing() {
@@ -23,6 +24,7 @@ import Documentation from "../pages/documentation/documentation";
                   <Route path ="/" element ={<LandingPages />}/>
                   <Route path ="/blog" element ={<Blogs />}/>
                   <Route path ="/document" element ={<Documentation />}/>
+                  <Route path ="/plugins" element ={<Plugins />}/>
               </Routes>
               </BrowserRouter>
              
