@@ -29,7 +29,7 @@ function NavigationBar() {
             >
         
               <li><Link to="blog">Blog</Link></li>
-              <li><a href="#news">News</a></li>
+              <li><Link to="document">Documentation</Link></li>
               <li><a href="#home">Home</a></li>
               <li><a href="#news">News</a></li>
               <li class="dropdown">

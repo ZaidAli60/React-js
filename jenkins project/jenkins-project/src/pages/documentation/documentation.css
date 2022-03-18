@@ -1,0 +1,17 @@
+.documPara{
+    width: 90%;
+    margin-top: 100px;
+    text-decoration: justify;
+    opacity: 0.7;
+
+
+}
+.para2{
+    text-decoration: justify;
+    width: 90%;
+    /* opacity: 0.7; */
+
+}
+.para2 > h1{
+    opacity: 0.7;
+}
