@@ -19,6 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import profile from "../../assets/profile.jpg"
 import FormDialog from '../form/from';
+import BasicTable from '../table/table';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -137,6 +138,11 @@ function ResponsiveDrawer(props) {
                 <Toolbar />
                  <Typography paragraph>
                     <FormDialog />
+                 
+                </Typography>
+                <Typography >
+                    
+                    <BasicTable />
                 </Typography>
                 {/* <Typography paragraph>
                     Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
