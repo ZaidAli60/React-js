@@ -24,25 +24,43 @@ import DialogTitle from '@mui/material/DialogTitle';
         Add Users
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>User From</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We
-            will send updates occasionally.
+            To subscribe to this website, please enter your email address here.
           </DialogContentText>
           <TextField
-            autoFocus
+            margin="dense"
+            id="name"
+            label="User Name"
+            type="text"
+            fullWidth
+            variant="standard"
+            placeholder='Name'
+          />
+            <TextField
             margin="dense"
             id="name"
             label="Email Address"
             type="email"
             fullWidth
             variant="standard"
+            placeholder='Email Address'
           />
+            <TextField
+            margin="dense"
+            id="name"
+            label="Roles"
+            type="text"
+            fullWidth
+            variant="standard"
+            placeholder='Roles'
+          />
+      
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleClose}>Add</Button>
         </DialogActions>
       </Dialog>
     </div>
