@@ -1,10 +1,10 @@
-import ClippedDrawer from "./component/drewer/drewer";
+import ResponsiveDrawer from "./component/drewer/drewer";
 
 
 function App() {
   return (
     <div className="App">
-      <ClippedDrawer />
+      <ResponsiveDrawer />
     </div>
   );
 }
