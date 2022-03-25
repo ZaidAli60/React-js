@@ -18,12 +18,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+
 function FormDialog() {
   const [open, setOpen] = React.useState(false);
   const [datas, setUserDate] = useState(userData);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [roles, setRoles] = useState("");
+  const [flag, setflag] = useState(name)
+
 
 
   const handleClickOpen = () => {
@@ -32,14 +35,25 @@ function FormDialog() {
 
   const handleClose = () => {
     setOpen(false);
-    const obj = {
-      name,
-      email,
-      roles,
-    }
-    setUserDate([...datas, obj])
+    if (name !== "" && email !== "" && roles !== "") {
+      const obj = {
+        name,
+        email,
+        roles,
+      }
+      setUserDate([...datas, obj])
+      setName("")
+      setRoles("")
+      setEmail("")
 
-    console.log(obj)
+      console.log(obj)
+    } else {
+      alert("Something went wrong!")
+
+
+    }
+
+
   };
 
   return (
@@ -94,8 +108,12 @@ function FormDialog() {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type='submit' onClick={handleClose}>Add</Button>
+          {/* <Button onClick={handleClose}>Cancel</Button> */}
+   
+            <Button type='submit' color='secondary' onClick={handleClose}>Add</Button>
+           
+
+
         </DialogActions>
       </Dialog>
 
@@ -134,6 +152,7 @@ function FormDialog() {
                   <TableCell align="right">{item.email}</TableCell>
                   <TableCell align="right">{item.roles}</TableCell>
                   <TableCell align="right"><button>Add</button> <button>delete</button></TableCell>
+ 
                 </TableRow>)
               })
             }
