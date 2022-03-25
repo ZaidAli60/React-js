@@ -8,15 +8,15 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from "react";
 import { userData } from "../userData/userData";
-// import BasicTable from '../table/table';
-// import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
+import BasicTable from '../form/table';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+
 
 
 function FormDialog() {
@@ -26,6 +26,21 @@ function FormDialog() {
   const [email, setEmail] = useState("");
   const [roles, setRoles] = useState("");
   const [flag, setflag] = useState(name)
+
+
+const deleteHandler= (id)=>{
+
+console.log(id)
+
+const newItems = datas.filter((item)=>{
+  if (item.id !== id) {
+    return item;
+  }
+
+})
+console.log("newItems", newItems)
+setUserDate([...newItems])
+}
 
 
 
@@ -109,55 +124,45 @@ function FormDialog() {
         </DialogContent>
         <DialogActions>
           {/* <Button onClick={handleClose}>Cancel</Button> */}
-   
-            <Button type='submit' color='secondary' onClick={handleClose}>Add</Button>
-           
+
+          <Button type='submit' color='secondary' onClick={handleClose}>Add</Button>
+
 
 
         </DialogActions>
       </Dialog>
 
-      {/* {
-        datas.map((item)=>{
-          return(<BasicTable userdatas={item}/>)
-        })
-      } */}
-
-
-
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 100 }} aria-label="simple table">
-          <TableHead >
-            <TableRow >
-
-
-              <TableCell ><h4>User Name</h4> </TableCell>
-
-              <TableCell align="right"><h4>Email</h4> </TableCell>
-              <TableCell align="right"><h4>Roles</h4> </TableCell>
-              <TableCell align="right"><h4>Action</h4> </TableCell>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>User Name</TableCell>
+              <TableCell align="right">Email</TableCell>
+              <TableCell align="right">Roles</TableCell>
+              <TableCell align="right">Action</TableCell>
+              {/* <TableCell align="right"></TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
 
-            {
-              datas.map((item) => {
-                return (<TableRow >
 
-                  <TableCell component="th" scope="row">
-                    {item.name}
-
-                  </TableCell>
-                  <TableCell align="right">{item.email}</TableCell>
-                  <TableCell align="right">{item.roles}</TableCell>
-                  <TableCell align="right"><button>Add</button> <button>delete</button></TableCell>
- 
-                </TableRow>)
-              })
-            }
-
-
+         {
+           datas.map((item,index)=>{
+             return( <TableRow key={item.id}>
+              <TableCell component="th" scope="row">
+                {item.name}
+              </TableCell>
+              <TableCell align="right">{item.email}</TableCell>
+              <TableCell align="right">{item.roles}</TableCell>
+              <TableCell align="right"><Button style={{backgroundColor:"green", color:"white"}} >Edit</Button> <Button onClick={()=> deleteHandler(item.id)}   style={{backgroundColor:"red", color:"white"}} >Delete</Button></TableCell>
+            
+            </TableRow>)
+        
+           })
+         }
+               
+             
 
 
 
@@ -165,12 +170,7 @@ function FormDialog() {
 
           </TableBody>
         </Table>
-
       </TableContainer>
-
-
-
-
     </div>
   );
 }
