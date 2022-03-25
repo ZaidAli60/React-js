@@ -19,7 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Avatar from '@mui/material/Avatar';
 import profile from "../../assets/profile.jpg"
 import FormDialog from '../form/from';
-import BasicTable from '../table/table';
+// import BasicTable from '../table/table';
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -31,7 +31,7 @@ function ResponsiveDrawer(props) {
     };
 
     const drawer = (
-        <div style={{ backgroundColor:"#263238", color: "white", }}>
+        <div style={{ backgroundColor:"#263238", color: "white", height:"100%"}}>
             <Toolbar style={{ backgroundColor: "#303f9f", color: "white", }}>
                 <h1>Dashboard</h1>
             </Toolbar>
@@ -142,7 +142,7 @@ function ResponsiveDrawer(props) {
                 </Typography>
                 <Typography >
                     
-                    <BasicTable />
+                    {/* <BasicTable /> */}
                 </Typography>
                 {/* <Typography paragraph>
                     Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
