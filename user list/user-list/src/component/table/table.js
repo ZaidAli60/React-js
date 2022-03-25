@@ -23,7 +23,7 @@ function BasicTable() {
 
                         {/* <TableCell align="right">User Name</TableCell> */}
                         <TableCell ><h4>User Name</h4> </TableCell>
-                        <TableCell align="right"><h4>User Name</h4> </TableCell>
+                      
                         <TableCell align="right"><h4>Email</h4> </TableCell>
                         <TableCell align="right"><h4>Roles</h4> </TableCell>
                         <TableCell align="right"><h4>Action</h4> </TableCell>
@@ -39,7 +39,7 @@ function BasicTable() {
                                 </TableCell>
                                 <TableCell align="right">{item.email}</TableCell>
                                 <TableCell align="right">{item.roles}</TableCell>
-                                <TableCell align="right">Admin</TableCell>
+                                <TableCell align="right"><button>Add</button> <button>delete</button></TableCell>
                             </TableRow>)
                         })
                     }
