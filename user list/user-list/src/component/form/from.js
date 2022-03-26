@@ -25,7 +25,8 @@ function FormDialog() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [roles, setRoles] = useState("");
-  // const [flag, setflag] = useState(name)
+  const [updata, setUpdata] = useState(0)
+  const [flag, setFlag] = useState(false)
 
 
   const deleteHandler = (id) => {
@@ -44,10 +45,12 @@ function FormDialog() {
 
   const upData = (item,index)=>{
       // console.log(item,index)
+      setUpdata(index)
      setName(item.name) 
      setEmail(item.email)
      setRoles(item.roles)
     setOpen(true);
+    setFlag(true)
      
 
   }
@@ -58,7 +61,7 @@ function FormDialog() {
   };
 
   const handleClose = () => {
-    setOpen(false);
+   
     if (name !== "" && email !== "" && roles !== "") {
       const obj = {
         name,
@@ -76,7 +79,42 @@ function FormDialog() {
 
 
     }
+    setOpen(false);
 
+  };
+
+  const upDataHandler = () => {
+   
+    if (name !== "" && email !== "" && roles !== "") {
+      const obj = {
+        name,
+        email,
+        roles,
+      }
+
+      const updataUser = datas.map((item,index)=>{
+        if (updata === index) {
+          return obj;
+        }else{
+          return item;
+        }
+      })
+      console.log(obj)
+      console.log(updataUser)
+
+
+      setUserDate([...updataUser])
+      setName("")
+      setRoles("")
+      setEmail("")
+      setFlag(false)
+
+    } else {
+      alert("Something went wrong!")
+
+
+    }
+    setOpen(false);
 
   };
 
@@ -133,8 +171,13 @@ function FormDialog() {
         </DialogContent>
         <DialogActions>
           {/* <Button onClick={handleClose}>Cancel</Button> */}
+      {
+        flag ?
+        <Button type='submit' color='secondary' onClick={upDataHandler}>Updata</Button>
+        :
+        <Button type='submit' color='secondary' onClick={handleClose}>Add</Button>
 
-          <Button type='submit' color='secondary' onClick={handleClose}>Add</Button>
+      }
 
 
 
