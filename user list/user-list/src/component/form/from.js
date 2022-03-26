@@ -25,23 +25,32 @@ function FormDialog() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [roles, setRoles] = useState("");
-  const [flag, setflag] = useState(name)
+  // const [flag, setflag] = useState(name)
 
 
-const deleteHandler= (id)=>{
+  const deleteHandler = (id) => {
 
-console.log(id)
+    
 
-const newItems = datas.filter((item)=>{
-  if (item.id !== id) {
-    return item;
+    const newItems = datas.filter((item) => {
+      if (item.id !== id) {
+        return item;
+      }
+
+    })
+    // console.log("newItems", newItems)
+    setUserDate([...newItems])
   }
 
-})
-console.log("newItems", newItems)
-setUserDate([...newItems])
-}
+  const upData = (item,index)=>{
+      // console.log(item,index)
+     setName(item.name) 
+     setEmail(item.email)
+     setRoles(item.roles)
+    setOpen(true);
+     
 
+  }
 
 
   const handleClickOpen = () => {
@@ -91,7 +100,7 @@ setUserDate([...newItems])
             variant="standard"
             placeholder='Enter Your Name'
             color='secondary'
-            // value={name}
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <TextField
@@ -103,7 +112,7 @@ setUserDate([...newItems])
             variant="standard"
             placeholder='Enter Your Email'
             color='secondary'
-            // value={name}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
@@ -116,7 +125,7 @@ setUserDate([...newItems])
             variant="standard"
             placeholder='Enter Your Role'
             color='secondary'
-            // value={name}
+            value={roles}
             onChange={(e) => setRoles(e.target.value)}
           />
 
@@ -147,22 +156,22 @@ setUserDate([...newItems])
           <TableBody>
 
 
-         {
-           datas.map((item,index)=>{
-             return( <TableRow key={item.id}>
-              <TableCell component="th" scope="row">
-                {item.name}
-              </TableCell>
-              <TableCell align="right">{item.email}</TableCell>
-              <TableCell align="right">{item.roles}</TableCell>
-              <TableCell align="right"><Button style={{backgroundColor:"green", color:"white"}} >Edit</Button> <Button onClick={()=> deleteHandler(item.id)}   style={{backgroundColor:"red", color:"white"}} >Delete</Button></TableCell>
-            
-            </TableRow>)
-        
-           })
-         }
-               
-             
+            {
+              datas.map((item, index) => {
+                return (<TableRow key={item.id}>
+                  <TableCell component="th" scope="row">
+                    {item.name}
+                  </TableCell>
+                  <TableCell align="right">{item.email}</TableCell>
+                  <TableCell align="right">{item.roles}</TableCell>
+                  <TableCell align="right"><Button onClick={()=>upData(item,index)} style={{ backgroundColor: "green", color: "white" }} >Edit</Button> <Button onClick={() => deleteHandler(item.id)} style={{ backgroundColor: "red", color: "white" }} >Delete</Button></TableCell>
+
+                </TableRow>)
+
+              })
+            }
+
+
 
 
 
