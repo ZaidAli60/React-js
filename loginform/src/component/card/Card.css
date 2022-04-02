@@ -1,0 +1,23 @@
+body{
+    background: radial-gradient(circle, rgba(21,35,45,1) 0%, rgba(115,41,133,1) 100%);
+}
+.card{
+    padding: 20px;
+    margin: 8% auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.login-btn{
+    padding: 0.5rem 6rem 0.5rem 6rem;
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    border-radius: 1rem ;
+    border-color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+}
