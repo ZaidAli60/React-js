@@ -11,7 +11,7 @@ function Time() {
     return (
         <>
         <div className="bg-info text-white text-center">
-            <p>{ctime}</p>
+            <p className='mb-0'>{ctime}</p>
         </div>
         </>
     )

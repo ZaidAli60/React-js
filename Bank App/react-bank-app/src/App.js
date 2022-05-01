@@ -1,4 +1,5 @@
 import './App.css';
+import Navbar from './component/navbar/Navbar';
 import Time from './component/Time/Time';
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <Time />
+      <Navbar />
     </div>
   );
 }
