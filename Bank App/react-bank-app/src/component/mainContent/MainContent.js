@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Modal from './Modal';
+
 function MainContent() {
     return (
         <>
             <div >
-
                 <div class="container">
                     <div class="row my-5">
                         <div class="col">
@@ -12,7 +13,15 @@ function MainContent() {
                                     <h5 className="card-title text-center "><i class="bi bi-person-fill"></i>Accounts</h5>
                                     <hr />
                                     <div className='text-center '>
-                                        <button className='btn btn-primary me-2' > <i className="bi bi-plus"></i> Add New Account </button>
+                                        <button
+                                            type="button"
+                                            className='btn btn-primary me-2'
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        >
+                                            <i className="bi bi-plus"></i>
+
+                                            Add New Account
+                                        </button>
                                         <button className='btn btn-warning text-white '>View All Accounts</button>
                                     </div>
                                     <hr />
@@ -44,8 +53,9 @@ function MainContent() {
 
                     </div>
                 </div>
-
+                <Modal />
             </div>
+
 
         </>
     )
