@@ -2,7 +2,7 @@ import React from 'react'
 function MainContent() {
     return (
         <>
-            <div>
+            <div >
 
                 <div class="container">
                     <div class="row my-5">
