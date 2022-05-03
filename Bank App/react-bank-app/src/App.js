@@ -7,13 +7,13 @@ import Footer from './component/footer/Footer';
 import MainContent from './component/mainContent/MainContent';
 import Navbar from './component/navbar/Navbar';
 import Time from './component/Time/Time';
-import CreateAccount from './component/mainContent/Modal';
+// import CreateAccount from './component/mainContent/Modal';
+import Accounts from './component/mainContent/Accounts';
 
 function App() {
 
   return (
     <div className="App">
-      {/* <MainContent /> */}
 
 
       <BrowserRouter>
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<MainContent />} />
           <Route path='/dashboard' element={<MainContent />} />
-          <Route path='/create' element={<CreateAccount />} />
+          <Route path='/create' element={<Accounts />} />
         </Routes>
         <Footer />
       </BrowserRouter>

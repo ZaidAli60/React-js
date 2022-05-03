@@ -1,6 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 function Modal() {
+
+  const [fullName, setfullName] = useState('');
+  const [cnicNumber, setcnicNumber] = useState('');
+  const [branchCode, setbranchCode] = useState('');
+  const [accountNumber, setaccountNumber] = useState('');
+  const [initialDeposit, setinitialDeposit] = useState('');
+
+// const nameHandler =(e)=>{
+//   setfullName(e.target.value);
+//   console.log(fullName)
+// }
+
+const formSubmitHandler = ()=>{
+  const obj = {
+    fullName,
+    cnicNumber,
+    branchCode,
+    accountNumber,
+    initialDeposit,
+  }
+  setfullName("")
+  setcnicNumber("")
+  setbranchCode("")
+  setinitialDeposit("")
+  setaccountNumber("")
+  console.log(obj)
+}
   return (
     <>
 
@@ -16,19 +43,39 @@ function Modal() {
                 <form className="row g-3">
                   <div className="col-md-6">
                     <label htmlFor="inputEmail4" className="form-label">Full Name</label>
-                    <input type="text" className="form-control" id="inputEmail4" />
+                    <input type="text"
+                     className="form-control"
+                      id="inputEmail4"
+                      value={fullName}
+                      onChange={(e)=>setfullName(e.target.value)}
+                      />
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputPassword4" className="form-label"> CNIC Number </label>
-                    <input type="text" className="form-control" id="inputPassword4" />
+                    <input type="text"
+                     className="form-control"
+                      id="inputPassword4"
+                      value={cnicNumber}
+                      onChange={(e)=>setcnicNumber(e.target.value)}
+                       />
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputEmail4" className="form-label">Branch Code</label>
-                    <input type="number" className="form-control" id="inputEmail4" />
+                    <input type="number"
+                     className="form-control"
+                      id="inputEmail4" 
+                      value={branchCode}
+                      onChange={(e)=> setbranchCode(e.target.value)}
+                      />
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputPassword4" className="form-label"> Account Number  </label>
-                    <input type="number" className="form-control" id="inputPassword4" />
+                    <input type="number"
+                     className="form-control"
+                      id="inputPassword4" 
+                      value={accountNumber}
+                      onChange={(e)=> setaccountNumber(e.target.value)}
+                      />
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputState" className="form-label">Choose Account</label>
@@ -40,19 +87,24 @@ function Modal() {
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputPassword4" className="form-label">Initial Deposit   </label>
-                    <input type="number" className="form-control" id="inputPassword4" />
+                    <input type="number"
+                     className="form-control"
+                      id="inputPassword4"
+                      value={initialDeposit}
+                      onChange={(e)=> setinitialDeposit(e.target.value)}
+                       />
                   </div>
                
-                  
                   <div className="col-12">
-                    <button type="submit" className="btn btn-primary">Sign in</button>
+                    <button type="submit" onClick={(e)=>{
+                      e.preventDefault();
+                      formSubmitHandler()
+                    }
+                      } className="btn btn-primary">Create New Account</button>
                   </div>
                 </form>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
+         
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ function MainContent() {
                                 <div className="card-body">
                                     <h5 className="card-title text-center "><i class="bi bi-person-fill"></i>Accounts</h5>
                                     <hr />
-                                    <div className='text-center '>
+                                    <div className='text-center'>
                                         <button
                                             type="button"
                                             className='btn btn-primary me-2'
