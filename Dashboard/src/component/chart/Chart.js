@@ -35,7 +35,7 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
 export const data = {
   labels,
@@ -45,11 +45,11 @@ export const data = {
       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
+    // {
+    //   label: 'Dataset 2',
+    //   data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+    //   backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    // },
   ],
 };
 
