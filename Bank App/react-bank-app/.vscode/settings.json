@@ -1,0 +1,5 @@
+{
+    "html.format.wrapAttributes": "force-aligned",
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "html.format.wrapLineLength": 40
+}
