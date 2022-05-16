@@ -1,29 +1,27 @@
-import React,{useState,useEffect} from "react";
-import { collection, getDocs } from "firebase/firestore/lite"
-import { firestore } from "../config/firebase"
-function Accounts() {
-  const [doucuments, setdoucuments] = useState([])
+import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore/lite";
+import { firestore } from "../config/firebase";
+function Transcation() {
+  const [doucuments, setdoucuments] = useState([]);
   const [isLoading, setisLoading] = useState(false);
   // const [userReadData, setuserReadData] = useState([])
   const collectionName = "User";
   const collectionRef = collection(firestore, collectionName);
 
-
   const readDocs = async () => {
-    setisLoading(true)
+    setisLoading(true);
     let newArray = [];
     const querySnapshot = await getDocs(collectionRef);
     querySnapshot.forEach((doc) => {
-      newArray.push({...doc.data(),id:doc.id,})
-    })
+      newArray.push({ ...doc.data(), id: doc.id });
+    });
     setdoucuments(newArray);
-    setisLoading(false)
-  } 
+    setisLoading(false);
+  };
 
   useEffect(() => {
     readDocs();
-  }, [])
-  
+  }, []);
 
   return (
     <>
@@ -38,8 +36,7 @@ function Accounts() {
       >
         {isLoading ? (
           <div className="d-flex justify-content-center">
-            <div className="spinner-border" role="status">
-            </div>
+            <div className="spinner-border" role="status"></div>
           </div>
         ) : (
           <table className="table table-striped table-hove">
@@ -58,9 +55,7 @@ function Accounts() {
               {doucuments.map((item, index) => {
                 return (
                     <tr key={item.id}>
-                      <th scope="row">
-                        {index}
-                      </th>
+                      <th scope="row">{index}</th>
                       <td>{item.branchCode}</td>
                       <td>{item.accountNumber}</td>
                       <td className="text-primary">{item.fullName}</td>
@@ -78,4 +73,4 @@ function Accounts() {
   );
 }
 
-export default Accounts;
+export default Transcation;

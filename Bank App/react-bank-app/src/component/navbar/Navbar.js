@@ -43,9 +43,12 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white fs-5 disabled" href="#">
+                <Link
+                  className="nav-link text-white fs-5 "
+                  to="/transactions"
+                >
                   Transactions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

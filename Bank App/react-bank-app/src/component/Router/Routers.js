@@ -5,6 +5,7 @@ import Time from "../Time/Time";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Transcation from '../transcation/Transcation';
 function Routers() {
   return (
     <>
@@ -14,6 +15,10 @@ function Routers() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/create-account" element={<Accounts />} />
+          <Route
+            path="/transactions"
+            element={<Transcation />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
