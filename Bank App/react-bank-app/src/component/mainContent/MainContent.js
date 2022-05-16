@@ -1,7 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 
+
 function MainContent() {
+  
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/create-account`;
+    navigate(path);
+  };
+    const routeChangeTranscation = () => {
+      let path = `/transcations`;
+      navigate(path);
+    };
   return (
     <>
       <div>
@@ -24,7 +36,10 @@ function MainContent() {
                       <i className="bi bi-plus"></i>
                       Add New Account
                     </button>
-                    <button className="btn btn-warning text-white ">
+                    <button
+                      className="btn btn-warning text-white "
+                      onClick={routeChange}
+                    >
                       View All Accounts
                     </button>
                   </div>
@@ -44,8 +59,11 @@ function MainContent() {
                   </h5>
                   <hr />
                   <div className="text-center ">
-                    <button className="btn btn-warning text-white ">
-                      View All Accounts
+                    <button
+                      className="btn btn-warning text-white "
+                      onClick={routeChangeTranscation}
+                    >
+                      View All Transactions
                     </button>
                   </div>
                   <hr />

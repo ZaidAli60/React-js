@@ -16,7 +16,7 @@ function Routers() {
           <Route path="/" element={<MainContent />} />
           <Route path="/create-account" element={<Accounts />} />
           <Route
-            path="/transactions"
+            path="/transcations"
             element={<Transcation />}
           />
         </Routes>

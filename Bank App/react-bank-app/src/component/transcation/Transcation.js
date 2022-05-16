@@ -29,9 +29,9 @@ function Transcation() {
         className="container"
         style={{
           display: "flex",
-          height: "500px",
           justifyContent: "center",
           alignItems: "center",
+          marginTop:"5rem"
         }}
       >
         {isLoading ? (

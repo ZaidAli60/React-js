@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore/lite";
 import { firestore } from "../config/firebase";
-import { toast  } from "react-toastify"
+import { toast } from "react-toastify"
+
 function Modal() {
   const [fullName, setfullName] = useState("");
   const [cnicNumber, setcnicNumber] = useState("");
@@ -10,7 +11,6 @@ function Modal() {
   const [initialDeposit, setinitialDeposit] = useState("");
   const [chooseAccount, setChooseAccount] = useState("")
 
-    
   const collectionName = "User"
   const collectionRef = collection(firestore, collectionName);
 
@@ -30,6 +30,7 @@ function Modal() {
     try {
       const addRef = await addDoc(collectionRef, formData);
       toast.success("User has been added!", {
+        
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -38,6 +39,9 @@ function Modal() {
         draggable: true,
         progress: undefined,
       });
+
+   
+
       console.log(addRef.id)
     } catch (error) {
       toast.error("Something Went Wrong", {
