@@ -1,7 +1,28 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
+import { collection, getDocs } from "firebase/firestore/lite"
+import {firestore} from "../config/firebase"
+function Accounts() {
+  const [doucuments, setdoucuments] = useState([])
+  const [isLoading, setisLoading] = useState(false);
+  const collectionName = "User";
+  const collectionRef = collection(firestore, collectionName);
 
-function Accounts(props) {
-  const { data } = props;
+
+  const readDocs = async () => {
+    setisLoading(true)
+    let newArray = [];
+    const querySnapshot = await getDocs(collectionRef);
+    querySnapshot.forEach((doc) => {
+      newArray.push({...doc.data(),id:doc.id,})
+    })
+    setdoucuments(newArray);
+    setisLoading(false)
+  } 
+
+  useEffect(() => {
+    readDocs();
+  }, [])
+  
 
   return (
     <>
@@ -14,35 +35,41 @@ function Accounts(props) {
           alignItems: "center",
         }}
       >
-        <table className="table table-striped table-hove">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td></td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </table>
+        {isLoading ? (
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+            </div>
+          </div>
+        ) : (
+          <table className="table table-striped table-hove">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Branch Code</th>
+                <th scope="col">Account #</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {doucuments.map((item, index) => {
+                return (
+                  <tr>
+                    <th scope="row">{index}</th>
+                    <td>{item.branchCode}</td>
+                    <td>{item.accountNumber}</td>
+                    <td className="text-primary">{item.fullName}</td>
+                    <td>{item.chooseAccount}</td>
+                    <td className="text-primary">{item.initialDeposit}</td>
+                    <td>{item.cnicNumber}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
     </>
   );
