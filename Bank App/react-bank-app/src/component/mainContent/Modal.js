@@ -1,33 +1,38 @@
 import React, { useState } from "react";
-
-// import {useNavigate} from "react-router-dom"
-
+import { collection, addDoc } from "firebase/firestore/lite";
+import { firestore } from "../config/firebase";
 function Modal() {
   const [fullName, setfullName] = useState("");
   const [cnicNumber, setcnicNumber] = useState("");
   const [branchCode, setbranchCode] = useState("");
   const [accountNumber, setaccountNumber] = useState("");
   const [initialDeposit, setinitialDeposit] = useState("");
-  const [data, setData] = useState([]);
+  const [chooseAccount, setChooseAccount] = useState("")
+  // const [data, setData] = useState([]);
 
-  const formSubmitHandler = (e) => {
+  const collectionName = "User"
+  const collectionRef = collection(firestore, collectionName);
+
+  const addUserData = async (e) => {
     e.preventDefault();
-    const obj = {
+    const formData = {
       fullName,
       cnicNumber,
       branchCode,
       accountNumber,
+      chooseAccount,
       initialDeposit,
-    };
+    }
+    try {
+      const addRef = await addDoc(collectionRef, formData);
+      console.log(addRef.id)
+    } catch (error) {
+      console.log(error);
+    }
+}
 
-    setData([obj]);
-    setfullName("");
-    setcnicNumber("");
-    setbranchCode("");
-    setinitialDeposit("");
-    setaccountNumber("");
-    console.log(obj);
-  };
+
+ 
   return (
     <>
       <div>
@@ -107,7 +112,11 @@ function Modal() {
                     <label htmlFor="inputState" className="form-label">
                       Choose Account
                     </label>
-                    <select id="inputState" className="form-select">
+                    <select
+                      id="inputState"
+                      className="form-select"
+                      onChange={(e) => setChooseAccount(e.target.value)}
+                    >
                       <option selected>Choose Account Type</option>
                       <option>Saving</option>
                       <option>Current</option>
@@ -129,7 +138,7 @@ function Modal() {
                   <div className="col-12">
                     <button
                       type="submit"
-                      onClick={formSubmitHandler}
+                      onClick={addUserData}
                       className="btn btn-primary"
                     >
                       Create New Account
