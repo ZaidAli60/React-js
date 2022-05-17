@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 
 
 function MainContent() {
+
   
   let navigate = useNavigate();
   const routeChange = () => {
@@ -13,7 +14,7 @@ function MainContent() {
     const routeChangeTranscation = () => {
       let path = `/transcations`;
       navigate(path);
-    };
+  };
   return (
     <>
       <div>
