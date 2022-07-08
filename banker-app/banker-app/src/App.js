@@ -1,4 +1,5 @@
 import "./App.css";
+import MainHeader from "./component/landingpage/mainHeader/MainHeader";
 import Navbar from "./component/landingpage/navbar/Navbar";
 import Time from "./component/landingpage/time/Time";
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <Time />
       <Navbar />
+      <MainHeader />
     </div>
   );
 }
