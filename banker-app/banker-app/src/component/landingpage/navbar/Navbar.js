@@ -3,8 +3,7 @@ import "./Navbar.css";
 
 function Navbar() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar sticky-top  navbar-expand-lg bg-white ">
         <div className="container">
           <a className="navbar-brand me-auto logoName fs-2" href="#">
             Banker
@@ -111,7 +110,6 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </div>
   );
 }
 
