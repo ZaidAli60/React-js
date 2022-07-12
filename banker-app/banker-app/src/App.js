@@ -1,15 +1,10 @@
 import "./App.css";
-import MainHeader from "./component/landingpage/mainHeader/MainHeader";
-import Navbar from "./component/landingpage/navbar/Navbar";
-import Services from "./component/landingpage/services/Services";
-import Time from "./component/landingpage/time/Time";
+import Routers from "./component/landingpage/routers";
+
 function App() {
   return (
     <div className="App">
-      <Time />
-      <Navbar />
-      <MainHeader />
-      <Services />
+      <Routers />
     </div>
   );
 }
