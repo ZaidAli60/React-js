@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
@@ -97,7 +98,7 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              <button
+              <Link to="/login"
                 className="btn fw-bold  text-white text-uppercase "
                 style={{
                   backgroundColor: "#fd7e14",
@@ -105,7 +106,7 @@ function Navbar() {
                 }}
               >
                 Login
-              </button>
+              </Link>
             </div>
           </div>
         </div>

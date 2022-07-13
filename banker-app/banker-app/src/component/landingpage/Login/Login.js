@@ -1,5 +1,9 @@
 import React from "react";
 import "./Login.css"
+import { Link } from "react-router-dom";
+import { ImFacebook } from 'react-icons/im';
+import { AiOutlineGoogle } from 'react-icons/ai';
+import { AiOutlineTwitter } from 'react-icons/ai';
 
 function Login() {
   return (
@@ -32,22 +36,23 @@ function Login() {
               </div>
               <div className="mt-5 mb-5 d-flex justify-content-evenly">
                 <button className="btn btn-primary">
-                  {/* <ImFacebook className="fs-5" /> */}
+                  <ImFacebook className="fs-5" />
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ backgroundColor: "#dd4b39", border: "none" }}
                 >
-                  {/* <AiOutlineGoogle className="fs-5" /> */}
+                  <AiOutlineGoogle className="fs-5" />
                 </button>
                 <button
                   className="btn btn-primary"
                   style={{ backgroundColor: "#1da1f2", border: "none" }}
                 >
+                  <AiOutlineTwitter className="fs-5" />
                 </button>
               </div>
               <div>
-                {/* <Link to="/register">SIGN UP</Link> */}
+                <Link to="/register">SIGN UP</Link>
               </div>
             </form>
           </div>
