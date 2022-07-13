@@ -3,5 +3,7 @@
 }
 .activecolor{
     color: #fd7e14 !important;
-
+}
+.navigationBar{
+    border-bottom:2px solid #fd7e14 !important;
 }

@@ -1,0 +1,21 @@
+.gallerly{
+  color: #fd7e14 ;
+  display: flex ;
+  justify-content: center;
+}
+.btns{
+    background-color: rgb(218, 217, 217);
+    border: none;
+   margin: 10px;
+    padding: 5px 25px 5px 25px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    font-weight: 200%;
+}
+.btns:hover{
+    background-color: #fd7e14;
+    color: white;
+
+}

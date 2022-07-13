@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 function Navbar() {
   return (
-      <nav className="navbar sticky-top  navbar-expand-lg bg-white ">
+      <nav className="navbar sticky-top navigationBar  navbar-expand-lg bg-white ">
         <div className="container">
           <a className="navbar-brand me-auto logoName fs-2" href="#">
             Banker
