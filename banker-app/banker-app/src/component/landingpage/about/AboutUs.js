@@ -17,7 +17,7 @@ function AboutUs() {
       >
         About Us
       </h1>
-      <p className="my-4">
+      <p className="my-4 opacity-50">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus minima
         neque tempora reiciendis.
       </p>
