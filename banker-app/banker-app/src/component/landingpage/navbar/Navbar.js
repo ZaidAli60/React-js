@@ -83,11 +83,6 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Blog
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
                     Contact
                   </a>
                 </li>
