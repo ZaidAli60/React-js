@@ -14,7 +14,7 @@ function Gallerly() {
   return (
     <div className=" my-5">
       <h1 className="gallerly ">Gallerly</h1>
-      <div className="gallerlyBtn mt-5">
+      <div className="gallerlyBtn mt-5 text-center">
         <button
           className="btns text-uppercase"
           onClick={() => setdata(GallerlyData)}
@@ -24,7 +24,7 @@ function Gallerly() {
         {menuItems.map((item) => {
           return (
             <button
-              className="btns text-uppercase"
+              className="btns text-uppercase "
               onClick={() => filterData(item)}
             >
               {item}

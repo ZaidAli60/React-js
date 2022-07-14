@@ -37,7 +37,7 @@ function Navbar() {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="offcanvas-body">
+            <div className="offcanvas-body text-center">
               <ul className="navbar-nav  mb-2 mb-lg-0 ms-auto px-4">
                 <li className="nav-item">
                   <a

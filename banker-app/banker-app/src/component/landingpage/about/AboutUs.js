@@ -13,11 +13,12 @@ function AboutUs() {
       <h1
         style={{
           color: "#fd7e14",
+          textAlign:"center"
         }}
       >
         About Us
       </h1>
-      <p className="my-4 opacity-50">
+      <p className="my-4 opacity-50 text-center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus minima
         neque tempora reiciendis.
       </p>

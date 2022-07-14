@@ -15,7 +15,7 @@ function MainHeader() {
           autoplay={true}
           loop={true}
         >
-          <div className="item  d-flex justify-content-center align-items-center">
+          <div className="item text-center d-flex justify-content-center align-items-center">
             <div>
               <h1 className="text-uppercase fw-bold fs-1 text-light">bank solution</h1>
               <p className="text-light fw-bold">
@@ -29,7 +29,7 @@ function MainHeader() {
 
           <div className="item ">
             <div>
-              <h1 className="text-uppercase fw-bold fs-1 text-light">saving accounts</h1>
+              <h1 className="text-uppercase fw-bold fs-1 text-light text-center">saving accounts</h1>
               <p className="text-light fw-bold">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Doloremque tempora aliquid sint, quam, ipsam cumque aspernatur
@@ -41,7 +41,7 @@ function MainHeader() {
 
           <div className="item ">
             <div>
-              <h1 className="text-uppercase fw-bold fs-1 text-light">financing solution</h1>
+              <h1 className="text-uppercase fw-bold fs-1 text-light text-center">financing solution</h1>
               <p className="text-light fw-bold">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Doloremque tempora aliquid sint, quam, ipsam cumque aspernatur

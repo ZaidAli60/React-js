@@ -3,7 +3,7 @@ import "./MeetTeam.css";
 import MeetData from "./MeetTeamData";
 function MeetTeam() {
   return (
-    <div className="container">
+    <div className="container text-center">
       <h1 className="meetTeam">Meet Team</h1>
       <p className="py-3 opacity-50">
         A small river named Duden flows by their place and supplies it with the
