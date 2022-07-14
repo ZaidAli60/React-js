@@ -2,15 +2,13 @@ import { useState } from "react";
 import "./Gallerly.css";
 import GallerlyData from "./galleryData";
 function Gallerly() {
-  const [data, setdata] = useState(GallerlyData)
+  const [data, setdata] = useState(GallerlyData);
 
   const menuItems = [...new Set(GallerlyData.map((Val) => Val.category))];
-  console.log(menuItems);
   const filterData = (curval) => {
     const newItems = GallerlyData.filter((item) => {
       return item.category === curval;
     });
-    console.log(newItems);
     setdata(newItems);
   };
   return (
@@ -40,7 +38,6 @@ function Gallerly() {
             return (
               <div className="col-lg-4 col-md-3 col-sm-6 col-xm-12 ">
                 <img src={item.img} className="card-img-top my-3" alt="pic" />
-
               </div>
             );
           })}

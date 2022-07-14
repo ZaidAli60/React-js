@@ -1,5 +1,6 @@
 import React from "react";
 import AboutUs from "./about/AboutUs";
+import Contact from "./contact/Contact";
 import Gallerly from "./gallery/Gallerly";
 import MainHeader from "./mainHeader/MainHeader";
 import MeetTeam from "./meet team/MeetTeam";
@@ -17,6 +18,7 @@ function Index() {
       <AboutUs />
       <MeetTeam />
       <Gallerly />
+      <Contact />
     </>
   );
 }
