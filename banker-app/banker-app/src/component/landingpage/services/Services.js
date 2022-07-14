@@ -6,7 +6,7 @@ import Cards from "../../../Assets/cards.svg";
 function Services() {
   return (
     <div className="container my-5">
-      <div className="row">
+      <div className="row text-center">
         <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <img src={MoneySaving} alt="moneySaving" style={{width:"30%"}} />
           <h3 className="mt-3">Money Saving</h3>

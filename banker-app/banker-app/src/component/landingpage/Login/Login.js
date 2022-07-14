@@ -1,11 +1,22 @@
-import React from "react";
-import "./Login.css"
+import React, { useContext } from "react";
+import "./Login.css";
 import { Link } from "react-router-dom";
-import { ImFacebook } from 'react-icons/im';
-import { AiOutlineGoogle } from 'react-icons/ai';
-import { AiOutlineTwitter } from 'react-icons/ai';
+import { ImFacebook } from "react-icons/im";
+import { AiOutlineGoogle } from "react-icons/ai";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { Authcontext } from "../../context/Authcontext";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
+  const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
+  console.log(isAuthanticated);
+  const navigate = useNavigate()
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setisAuthanticated(true);
+    navigate('/dashboard')
+
+  };
   return (
     <div className="login-form">
       <div className="d-flex justify-content-center align-items-center min-vh-100 ">
@@ -14,7 +25,7 @@ function Login() {
             <h5 className="card-title text-uppercase text-center mt-4 fw-bold fs-3">
               Login
             </h5>
-            <form className="mt-5 text-center" >
+            <form className="mt-5 text-center">
               <input
                 type="email"
                 className="form-control inputField "
@@ -30,7 +41,10 @@ function Login() {
                 <a href="#">Forget Password</a>
               </div>
               <div className="mt-5">
-                <button className="btn text-uppercase loginBtn text-white fw-bold">
+                <button
+                  className="btn text-uppercase loginBtn text-white fw-bold"
+                  onClick={submitHandler}
+                >
                   Login
                 </button>
               </div>
