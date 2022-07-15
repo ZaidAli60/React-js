@@ -8,15 +8,16 @@ import Register from "./register/Register";
 import { Navigate } from "react-router-dom";
 import { Authcontext } from "../context/Authcontext";
 
-// const Navigate = useNavigate();
 function Routers() {
   const { isAuthanticated } = useContext(Authcontext);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPages />} />
-        {/* <Route path="/login" element={!isAuthanticated ? <Login /> : <Navigate to="/dashboard"  />} /> */}
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={!isAuthanticated ? <Login /> : <Navigate to="/dashboard" />}
+        />
         <Route
           path="/dashboard"
           element={<PrivateRouting Component={Dashboard} />}

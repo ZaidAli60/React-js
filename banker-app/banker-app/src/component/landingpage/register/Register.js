@@ -2,17 +2,14 @@ import { useState } from "react";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [userEmail, setuserEmail] = useState("");
   const [password, setpassword] = useState("");
 
+  const navigate = useNavigate();
   const formSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      userEmail,
-      password,
-    };
-    console.log(formData);
     createUserWithEmailAndPassword(auth, userEmail, password)
       .then((userCredential) => {
         // Signed in
@@ -27,6 +24,7 @@ function Register() {
           draggable: true,
           progress: undefined,
         });
+        navigate("/dashboard");
         // ...
         setuserEmail("");
         setpassword("");

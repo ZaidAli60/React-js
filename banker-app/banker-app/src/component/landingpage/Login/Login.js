@@ -6,6 +6,9 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { Authcontext } from "../../context/Authcontext";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+
 
 function Login() {
   const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
@@ -15,14 +18,41 @@ function Login() {
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    const formData = {
-      userName,
-      password,
-    }
-    console.log(formData)
+    
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, userName, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      toast.success("User has been sucessfully login", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setuserName("")
+      setpassword("")
+      
+      setisAuthanticated(true);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(`${errorCode + errorMessage}`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        navigate("/register")
+      });
 
-    setisAuthanticated(true);
-    // navigate("/dashboard");
   };
   return (
     <div className="login-form">
@@ -46,7 +76,7 @@ function Login() {
                 className="form-control my-4"
                 placeholder="Password"
                 value={password}
-                onChange={(e)=> setpassword(e.target.value)}
+                onChange={(e) => setpassword(e.target.value)}
               />
               <div>
                 <a href="#">Forget Password</a>
