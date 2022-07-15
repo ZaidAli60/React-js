@@ -8,7 +8,7 @@ import MeetTeam from "./meet team/MeetTeam";
 import Navbar from "./navbar/Navbar";
 import Services from "./services/Services";
 import Time from "./time/Time";
-
+import { Element } from "react-scroll";
 function Index() {
   return (
     <>
@@ -16,10 +16,19 @@ function Index() {
       <Navbar />
       <MainHeader />
       <Services />
-      <AboutUs />
-      <MeetTeam />
+      <Element name="About" className="About">
+        <AboutUs />
+      </Element>
+      <Element name="MeetTeam" className="MeetTeam">
+        <MeetTeam />
+      </Element>
+      <Element name="Gallerly" className="Gallerly">
       <Gallerly />
-      <Contact />
+      </Element>
+      <Element name="Contact" className="Contact">
+        <Contact />
+      </Element>
+
       <Footer />
     </>
   );

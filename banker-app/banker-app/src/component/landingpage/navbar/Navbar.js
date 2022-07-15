@@ -2,28 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../../context/Authcontext";
 import "./Navbar.css";
-// import { Link  } from "react-scroll";
-// import * as Scroll from "react-scroll";
-// import { Link } from "react-scroll";
-// import {
-//   Link,
-//   Button,
-//   Element,
-//   Events,
-//   animateScroll as scroll,
-//   scrollSpy,
-//   scroller,
-// } from "react-scroll";
-// import {
-//   Link,
-//   Button,
-//   Element,
-//   Events,
-//   animateScroll as scroll,
-//   scrollSpy,
-//   scroller,
-// } from "react-scroll";
-import { Link as Scrolllink, animateScroll as scroll } from "react-scroll";
+import { Link as Scroll, animateScroll as scroll } from "react-scroll";
 
 function Navbar() {
   const { isAuthanticated } = useContext(Authcontext);
@@ -86,26 +65,58 @@ function Navbar() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Scroll
+                      className="dropdown-item"
+                      activeClass="active"
+                      to="About"
+                      spy={true}
+                      smooth={true}
+                      offset={-90}
+                      duration={500}
+                    >
                       About Us
-                    </a>
+                    </Scroll>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Scroll
+                      className="dropdown-item"
+                      activeClass="active"
+                      to="MeetTeam"
+                      spy={true}
+                      smooth={true}
+                      offset={-90}
+                      duration={500}
+                    >
                       MeetTeam
-                    </a>
+                    </Scroll>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Scroll
+                      className="dropdown-item"
+                      activeClass="active"
+                      to="Gallerly"
+                      spy={true}
+                      smooth={true}
+                      offset={-90}
+                      duration={500}
+                    >
                       Gallerly
-                    </a>
+                    </Scroll>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link " href="#contact">
+                <Scroll
+                  activeClass="active"
+                  className="nav-link "
+                  to="Contact"
+                  spy={true}
+                  smooth={true}
+                  offset={-50}
+                  duration={500}
+                >
                   Contact
-                </a>
+                </Scroll>
               </li>
 
               <li className="nav-item">
