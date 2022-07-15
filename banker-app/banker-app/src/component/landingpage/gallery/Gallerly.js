@@ -21,9 +21,9 @@ function Gallerly() {
         >
           All
         </button>
-        {menuItems.map((item) => {
+        {menuItems.map((item,index) => {
           return (
-            <button
+            <button key={index}
               className="btns text-uppercase "
               onClick={() => filterData(item)}
             >
@@ -36,7 +36,7 @@ function Gallerly() {
         <div className="row">
           {data.map((item) => {
             return (
-              <div className="col-lg-4 col-md-3 col-sm-6 col-xm-12 ">
+              <div key={item.id} className="col-lg-4 col-md-3 col-sm-6 col-xm-12 ">
                 <img src={item.img} className="card-img-top my-3" alt="pic" />
               </div>
             );

@@ -2,6 +2,28 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Authcontext } from "../../context/Authcontext";
 import "./Navbar.css";
+// import { Link  } from "react-scroll";
+// import * as Scroll from "react-scroll";
+// import { Link } from "react-scroll";
+// import {
+//   Link,
+//   Button,
+//   Element,
+//   Events,
+//   animateScroll as scroll,
+//   scrollSpy,
+//   scroller,
+// } from "react-scroll";
+// import {
+//   Link,
+//   Button,
+//   Element,
+//   Events,
+//   animateScroll as scroll,
+//   scrollSpy,
+//   scroller,
+// } from "react-scroll";
+import { Link as Scrolllink, animateScroll as scroll } from "react-scroll";
 
 function Navbar() {
   const { isAuthanticated } = useContext(Authcontext);
@@ -65,23 +87,23 @@ function Navbar() {
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
                     <a className="dropdown-item" href="#">
-                      Action
+                      About Us
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Another action
+                      MeetTeam
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                      Gallerly
                     </a>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link " href="#contact">
                   Contact
                 </a>
               </li>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "../dashboard/Dashboard";
+import Dashboard from "../dashboard/layout/Dashboard";
 import PrivateRouting from "../important/PrivateRouting";
 import LandingPages from "../landingpage/index";
 import Login from "./Login/Login";
@@ -23,7 +23,12 @@ function Routers() {
           element={<PrivateRouting Component={Dashboard} />}
         />
 
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/register"
+          element={
+            !isAuthanticated ? <Register /> : <Navigate to="/dashboard" />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -10,9 +10,9 @@ function MeetTeam() {
         necessary regelialia.
       </p>
       <div className="row">
-        {MeetData.map((item) => {
+        {MeetData.map((item,index) => {
           return (
-            <div className="col-lg-3 col-md-4 col-sm-6 col-xm-12 py-4">
+            <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-xm-12 py-4">
                 <img src={item.img} className="card-img-top" alt="pic" />
                 <div >
                   <h5 className="pt-3">{item.heading}</h5>

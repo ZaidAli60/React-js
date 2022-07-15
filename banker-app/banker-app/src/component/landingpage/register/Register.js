@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { auth } from "../../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Authcontext } from "../../context/Authcontext";
 function Register() {
   const [userEmail, setuserEmail] = useState("");
   const [password, setpassword] = useState("");
-
+  const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
   const navigate = useNavigate();
   const formSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +15,6 @@ function Register() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // console.log(user);
         toast.success("User has been sucessfully add", {
           position: "top-right",
           autoClose: 5000,
@@ -24,16 +24,17 @@ function Register() {
           draggable: true,
           progress: undefined,
         });
-        navigate("/dashboard");
         // ...
+        setisAuthanticated(true);
         setuserEmail("");
         setpassword("");
+        navigate("/dashboard");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
+        // console.log(errorMessage);
+        // console.log(errorCode);
         toast.error(`${errorCode}`, {
           position: "top-right",
           autoClose: 5000,
