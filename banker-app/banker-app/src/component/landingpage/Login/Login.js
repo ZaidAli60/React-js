@@ -1,21 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { ImFacebook } from "react-icons/im";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { Authcontext } from "../../context/Authcontext";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
-  console.log(isAuthanticated);
-  const navigate = useNavigate()
+  const [userName, setuserName] = useState("");
+  const [password, setpassword] = useState("");
+
+  const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    setisAuthanticated(true);
-    navigate('/dashboard')
+    const formData = {
+      userName,
+      password,
+    }
+    console.log(formData)
 
+    setisAuthanticated(true);
+    // navigate("/dashboard");
   };
   return (
     <div className="login-form">
@@ -30,12 +37,16 @@ function Login() {
                 type="email"
                 className="form-control inputField "
                 placeholder="Enter Your E-mail"
+                value={userName}
+                onChange={(e) => setuserName(e.target.value)}
               />
 
               <input
                 type="password"
                 className="form-control my-4"
                 placeholder="Password"
+                value={password}
+                onChange={(e)=> setpassword(e.target.value)}
               />
               <div>
                 <a href="#">Forget Password</a>
