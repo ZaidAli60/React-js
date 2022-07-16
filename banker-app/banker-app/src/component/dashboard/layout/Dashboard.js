@@ -21,17 +21,29 @@ import Typography from "@mui/material/Typography";
 import Search from "./Search";
 import Notification from "./Notification";
 import Profile from "./Profile";
+import MoreIcon from "@mui/icons-material/MoreVert";
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
   console.log(isAuthanticated);
   const navigate = useNavigate();
   const logoutHandler = (e) => {
     e.preventDefault();
     setisAuthanticated(false);
     navigate("/");
+  };
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -103,19 +115,41 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            style={{ fontWeight: "bold", fontSize: "" }}
-            noWrap
-            component="div"
-          >
-            My Card
-          </Typography>
-          <Typography>
+
+          <Box style={{ display: "flex", flexGrow: "1" }}>
             <Search />
-          </Typography>
+          </Box>
           <Notification />
           <Profile />
+     
+          <IconButton
+        size="large"
+        aria-label="account of current user"
+        aria-controls="menu-appbar"
+        aria-haspopup="true"
+        onClick={handleMenu}
+        color="primary"
+      >
+        <MoreIcon />
+      </IconButton>
+      <Menu
+        id="menu-appbar"
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+      </Menu>
         </Toolbar>
       </AppBar>
       <Box

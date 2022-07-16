@@ -14,15 +14,18 @@ function Routers() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPages />} />
-        <Route
+        {/* <Route
           path="/login"
           element={!isAuthanticated ? <Login /> : <Navigate to="/dashboard" />}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/dashboard"
           element={<PrivateRouting Component={Dashboard} />}
+        /> */}
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
         />
-
         <Route
           path="/register"
           element={
