@@ -22,8 +22,9 @@ import Search from "./Search";
 import Notification from "./Notification";
 import Profile from "./Profile";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import NavLinklist from "./NavLinkConfig";
 
 const drawerWidth = 240;
 
@@ -53,34 +54,29 @@ function Dashboard(props) {
   };
 
   const drawer = (
-    <div>
-      <Toolbar />
+    <div className="bg-dark vh-100">
+      <Toolbar>
+        <Typography sx={{ color: "#fd7e14", fontSize: "2rem" }}>
+          Banker.
+        </Typography>
+      </Toolbar>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {NavLinklist.map((item) => {
+        return (
+          <List sx={{ color: "white" }}>
+            <ListItem  disablePadding>
+              <ListItemButton>
+                <ListItemIcon sx={{ color: "white" }}>
+                {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        );
+      })}
+
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 
@@ -101,8 +97,8 @@ function Dashboard(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          background: "white",
-          color: "black",
+          // backgroundColor: "rgba(33,37,41)",
+          backgroundColor: "white",
         }}
       >
         <Toolbar>
@@ -121,35 +117,35 @@ function Dashboard(props) {
           </Box>
           <Notification />
           <Profile />
-     
+
           <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
-        onClick={handleMenu}
-        color="primary"
-      >
-        <MoreIcon />
-      </IconButton>
-      <Menu
-        id="menu-appbar"
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-      </Menu>
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="primary"
+          >
+            <MoreIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
       <Box
