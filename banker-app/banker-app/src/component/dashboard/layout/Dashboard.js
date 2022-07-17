@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Authcontext } from "../../context/Authcontext";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -25,10 +25,15 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import NavLinklist from "./NavLinkConfig";
+import { Link, Link as LinkRouter, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "../layout/Dashboard";
+import AddAccount from "../pages/addAccount/AddAccount";
+import Transaction from "../pages/transaction/Transaction";
 
 const drawerWidth = 240;
 
-function Dashboard(props) {
+export default function Dashboar(props) {
   const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -60,22 +65,25 @@ function Dashboard(props) {
           Banker.
         </Typography>
       </Toolbar>
-      <Divider sx={{backgroundColor:"white"}} />
-      {NavLinklist.map((item) => {
-        return (
-          <List sx={{ color: "white" }}>
-            <ListItem  disablePadding>
-              <ListItemButton>
-                <ListItemIcon sx={{ color: "white" }}>
-                {item.icon}
-                </ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        );
-      })}
-
+      <Divider sx={{ backgroundColor: "white" }} />
+      <nav aria-label="main mailbox folders">
+        <List sx={{ color: "white" }}>
+          {NavLinklist.map((item) => {
+            return (
+              <Link component={LinkRouter} to={item.path}>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon sx={{ color: "white" }}>
+                      {item.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItemButton>
+                </ListItem>
+              </Link>
+            );
+          })}
+        </List>
+      </nav>
       <Divider />
     </div>
   );
@@ -109,7 +117,7 @@ function Dashboard(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "black" }} />
           </IconButton>
 
           <Box style={{ display: "flex", flexGrow: "1" }}>
@@ -192,10 +200,18 @@ function Dashboard(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          paddingTop: "64px"
         }}
       >
-        <Toolbar />
-        <Typography paragraph>
+        <Routes>
+          <Route path="/">
+            <Route index element={<h1>asd</h1>} />
+            <Route path="transaction" element={<Transaction />} />
+            <Route path="addaccount" element={<AddAccount />} />
+          </Route>
+        </Routes>
+        {/* <Toolbar /> */}
+        {/* <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
           dolor purus non enim praesent elementum facilisis leo vel. Risus at
@@ -209,8 +225,7 @@ function Dashboard(props) {
           vivamus at augue. At augue eget arcu dictum varius duis at consectetur
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
-        </Typography>
-      
+        </Typography> */}
       </Box>
     </Box>
   );
@@ -224,5 +239,3 @@ function Dashboard(props) {
 // window: PropTypes.func,
 
 // }
-
-export default Dashboard;

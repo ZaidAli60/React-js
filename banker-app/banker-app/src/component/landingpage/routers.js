@@ -7,14 +7,15 @@ import Register from "./register/Register";
 import { Navigate } from "react-router-dom";
 import { Authcontext } from "../context/Authcontext";
 import DashboardRouting from "../dashboard/pages/DashboardRouting";
+import AdminDashboard from "../dashboard/layout/Dashboard"
 
 function Routers() {
   const { isAuthanticated } = useContext(Authcontext);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-        <Route index element={<LandingPages />} />
+     
+        <Route path="/" element={<LandingPages />} />
         {/* <Route
           path="/login"
           element={!isAuthanticated ? <Login /> : <Navigate to="/dashboard" />}
@@ -24,8 +25,8 @@ function Routers() {
           element={<PrivateRouting Component={Dashboard} />}
         /> */}
         <Route
-          path="/dashboard"
-          element={<DashboardRouting />}
+          path="/dashboard/*"
+          element={<AdminDashboard />}
         />
         <Route
           path="/register"
@@ -33,7 +34,7 @@ function Routers() {
             !isAuthanticated ? <Register /> : <Navigate to="/dashboard" />
           }
         />
-          </Route>
+      
       </Routes>
     </BrowserRouter>
   );

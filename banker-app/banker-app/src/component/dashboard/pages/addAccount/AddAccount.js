@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function AddAccount() {
   return (
-    <div>AddAccount</div>
-  )
+    <>
+      {/* <h1>AddAccount</h1> */}
+    </>
+  );
 }
 
 export default AddAccount;
