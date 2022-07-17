@@ -6,10 +6,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 import React from "react";
 
@@ -37,8 +37,17 @@ function AddAccount() {
         </Button>
       </Box>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Enter Account Details Below</DialogTitle>
-        <DialogContent>
+        <DialogTitle
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            backgroundColor: "rgba(33,37,41)",
+            color: "white",
+          }}
+        >
+          Enter Account Details Below
+        </DialogTitle>
+        <DialogContent sx={{my:3}}>
           <Grid container spacing={1}>
             <Grid item md={6}>
               <TextField
@@ -89,8 +98,10 @@ function AddAccount() {
               />
             </Grid>
             <Grid item md={6}>
-              <FormControl fullWidth >
-                <InputLabel id="demo-simple-select-label">Choose Account</InputLabel>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Choose Account
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -118,8 +129,12 @@ function AddAccount() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button variant="contained" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="contained" onClick={handleClose}>
+            Create Account
+          </Button>
         </DialogActions>
       </Dialog>
     </Box>
