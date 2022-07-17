@@ -70,7 +70,11 @@ export default function Dashboar(props) {
         <List sx={{ color: "white" }}>
           {NavLinklist.map((item) => {
             return (
-              <Link component={LinkRouter} to={item.path}>
+              <Link
+                component={LinkRouter}
+                to={item.path}
+                style={{ textDecoration: "none" }}
+              >
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon sx={{ color: "white" }}>
@@ -200,7 +204,7 @@ export default function Dashboar(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          paddingTop: "64px"
+          paddingTop: "64px",
         }}
       >
         <Routes>

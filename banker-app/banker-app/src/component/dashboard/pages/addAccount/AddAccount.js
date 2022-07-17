@@ -12,6 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import React from "react";
+import StickyHeadTable from "./AccountTable";
 
 function AddAccount() {
   const [open, setOpen] = React.useState(false);
@@ -47,7 +48,7 @@ function AddAccount() {
         >
           Enter Account Details Below
         </DialogTitle>
-        <DialogContent sx={{my:3}}>
+        <DialogContent sx={{ my: 3 }}>
           <Grid container spacing={1}>
             <Grid item md={6}>
               <TextField
@@ -137,6 +138,9 @@ function AddAccount() {
           </Button>
         </DialogActions>
       </Dialog>
+      <Box sx={{ my: 4 }}>
+        <StickyHeadTable />
+      </Box>
     </Box>
   );
 }
