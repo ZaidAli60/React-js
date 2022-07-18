@@ -8,8 +8,9 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { firestore } from "../../../config/firebase";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore/lite";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 
 const collectName = "Account";
 const docsCollectRef = collection(firestore, collectName);
@@ -18,7 +19,6 @@ function StickyHeadTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [documents, setDocuments] = useState([]);
-  console.log(documents);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -41,6 +41,26 @@ function StickyHeadTable() {
   useEffect(() => {
     readDocs();
   }, []);
+
+  const deleteDocument = async (document) => {
+    // console.log(document);
+    await deleteDoc(doc(firestore, collectName, document.id));
+
+    let newArray = documents.filter((doc) => {
+      return document.id !== doc.id;
+    });
+    toast.error("Delete Account.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    setDocuments(newArray);
+  };
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -104,6 +124,7 @@ function StickyHeadTable() {
                       color="error"
                       size="small"
                       sx={{ ml: 1 }}
+                      onClick={()=>deleteDocument(item)}
                     >
                       Delete
                     </Button>
@@ -111,24 +132,7 @@ function StickyHeadTable() {
                 </TableRow>
               );
             })}
-            {/* {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })} */}
+         
           </TableBody>
         </Table>
       </TableContainer>

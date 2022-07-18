@@ -98,9 +98,16 @@ function AddAccount() {
         }
       );
     }
-    console.log(formData);
     try {
       const docRef = await addDoc(docsCollectRef, formData);
+      setState({
+        fullName: "",
+        cnic: "",
+        accountNumber: "",
+        chooseAccount: "",
+        branch: "",
+        intialDeposit: "",
+      });
       toast.success("User has been added!", {
         position: "bottom-right",
         autoClose: 5000,
@@ -123,6 +130,8 @@ function AddAccount() {
       });
     }
   };
+
+  
 
   return (
     <Box sx={{ p: 3 }}>
@@ -246,11 +255,16 @@ function AddAccount() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleClose}>
+          <Button variant="contained" onClick={handleClose} color="error">
             Cancel
           </Button>
           <div>
-            <Button variant="contained" type="sumbit" onClick={createDocs}>
+            <Button
+              variant="contained"
+              type="sumbit"
+              sx={{ ml: 2 }}
+              onClick={createDocs}
+            >
               Create Account
             </Button>
           </div>
