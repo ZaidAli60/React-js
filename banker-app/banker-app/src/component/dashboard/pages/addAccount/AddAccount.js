@@ -14,11 +14,19 @@ import Select from "@mui/material/Select";
 import StickyHeadTable from "./AccountTable";
 import { firestore } from "../../../config/firebase";
 import { collection, addDoc } from "firebase/firestore/lite";
+import { toast } from "react-toastify";
 const collectName = "Account";
 const docsCollectRef = collection(firestore, collectName);
 function AddAccount() {
   const [open, setOpen] = React.useState(false);
-  const [state, setState] = useState({});
+  const [state, setState] = useState({
+    fullName: "",
+    cnic: "",
+    accountNumber: "",
+    branch: "",
+    intialDeposit: "",
+    chooseAccount: "",
+  });
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -31,16 +39,91 @@ function AddAccount() {
     setOpen(false);
   };
 
-  const createDocs = async () => {
+  const createDocs = async (e) => {
+    e.preventDefault();
     const formData = state;
+    if (state.cnic.length !== 13) {
+      return toast.error(
+        `Your CNIC number ${state.cnic.length} is not valid. Please enter a valid CNIC number`,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    }
+    if (state.accountNumber.length !== 9) {
+      return toast.error(
+        `Your Account number ${state.accountNumber.length} is not valid. Please enter a valid Account number`,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    }
+    if (state.intialDeposit < 500) {
+      return toast.error(
+        `Your Initial Deposit number ${state.intialDeposit.length} is not valid. Please enter a Initial Deposit`,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    }
+    if (state.branch.length !== 2) {
+      return toast.error(
+        `Your Branch code  ${state.branch.length} is not valid. Please enter a Branch Code `,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    }
     console.log(formData);
     try {
       const docRef = await addDoc(docsCollectRef, formData);
-      console.log("Document written with ID: ", docRef.id);
+      toast.success("User has been added!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (e) {
       console.error("Error adding document: ", e);
+      toast.error("Something went wron", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
+
   return (
     <Box sx={{ p: 3 }}>
       <Box>
@@ -117,7 +200,7 @@ function AddAccount() {
                 autoFocus
                 margin="dense"
                 id="name"
-                label="Account Number"
+                label="Account Number (Length should be 9)"
                 type="number"
                 fullWidth
                 variant="outlined"
@@ -150,7 +233,7 @@ function AddAccount() {
                 autoFocus
                 margin="dense"
                 id="name"
-                label="Initial Deposit"
+                label="Initial Deposit (Minimum 500 Rs)"
                 type="number"
                 fullWidth
                 variant="outlined"
@@ -166,8 +249,8 @@ function AddAccount() {
           <Button variant="contained" onClick={handleClose}>
             Cancel
           </Button>
-          <div onClick={handleClose}>
-            <Button variant="contained" onClick={createDocs}>
+          <div>
+            <Button variant="contained" type="sumbit" onClick={createDocs}>
               Create Account
             </Button>
           </div>

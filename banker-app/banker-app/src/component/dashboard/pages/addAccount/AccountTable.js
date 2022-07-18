@@ -9,6 +9,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { firestore } from "../../../config/firebase";
 import { collection, getDocs } from "firebase/firestore/lite";
+import { Button } from "@mui/material";
 
 const collectName = "Account";
 const docsCollectRef = collection(firestore, collectName);
@@ -17,7 +18,7 @@ function StickyHeadTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [documents, setDocuments] = useState([]);
-  console.log(documents)
+  console.log(documents);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -85,7 +86,7 @@ function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {documents.map((item,index) => {
+            {documents.map((item, index) => {
               return (
                 <TableRow key={item.id}>
                   <TableCell>{index}</TableCell>
@@ -94,6 +95,19 @@ function StickyHeadTable() {
                   <TableCell>{item.accountNumber}</TableCell>
                   <TableCell>{item.branch}</TableCell>
                   <TableCell>{item.intialDeposit}</TableCell>
+                  <TableCell>
+                    <Button variant="contained" color="success" size="small">
+                      Edit
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      size="small"
+                      sx={{ ml: 1 }}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
                 </TableRow>
               );
             })}
