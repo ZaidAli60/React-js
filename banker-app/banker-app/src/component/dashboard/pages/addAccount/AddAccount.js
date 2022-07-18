@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import TextField from "@mui/material/TextField";
@@ -10,19 +11,35 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
-import React from "react";
 import StickyHeadTable from "./AccountTable";
-
+import { firestore } from "../../../config/firebase";
+import { collection, addDoc } from "firebase/firestore/lite";
+const collectName = "Account";
+const docsCollectRef = collection(firestore, collectName);
 function AddAccount() {
   const [open, setOpen] = React.useState(false);
+  const [state, setState] = useState({});
+
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const createDocs = async () => {
+    const formData = state;
+    console.log(formData);
+    try {
+      const docRef = await addDoc(docsCollectRef, formData);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
   return (
     <Box sx={{ p: 3 }}>
@@ -60,6 +77,9 @@ function AddAccount() {
                 fullWidth
                 variant="outlined"
                 size="small"
+                name="fullName"
+                value={state.fullName}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item md={6}>
@@ -68,10 +88,13 @@ function AddAccount() {
                 margin="dense"
                 id="name"
                 label="CNIC Number"
-                type="email"
+                type="number"
                 fullWidth
                 variant="outlined"
                 size="small"
+                name="cnic"
+                value={state.cnic}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item md={6}>
@@ -84,6 +107,9 @@ function AddAccount() {
                 fullWidth
                 variant="outlined"
                 size="small"
+                name="branch"
+                value={state.branch}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item md={6}>
@@ -96,6 +122,9 @@ function AddAccount() {
                 fullWidth
                 variant="outlined"
                 size="small"
+                name="accountNumber"
+                value={state.accountNumber}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item md={6}>
@@ -106,12 +135,13 @@ function AddAccount() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
                   label="Choose Account"
-                  // onChange={handleChange}
+                  name="chooseAccount"
+                  value={state.chooseAccount}
+                  onChange={handleChange}
                 >
-                  <MenuItem value={10}>Curent Account</MenuItem>
-                  <MenuItem value={20}>Saving Account</MenuItem>
+                  <MenuItem value="Current Account">Curent Account</MenuItem>
+                  <MenuItem value="Saving Account">Saving Account</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -125,6 +155,9 @@ function AddAccount() {
                 fullWidth
                 variant="outlined"
                 size="small"
+                name="intialDeposit"
+                value={state.intialDeposit}
+                onChange={handleChange}
               />
             </Grid>
           </Grid>
@@ -133,9 +166,11 @@ function AddAccount() {
           <Button variant="contained" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleClose}>
-            Create Account
-          </Button>
+          <div onClick={handleClose}>
+            <Button variant="contained" onClick={createDocs}>
+              Create Account
+            </Button>
+          </div>
         </DialogActions>
       </Dialog>
       <Box sx={{ my: 4 }}>

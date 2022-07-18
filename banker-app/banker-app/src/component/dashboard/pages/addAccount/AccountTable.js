@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,50 +7,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import { firestore } from "../../../config/firebase";
+import { collection, getDocs } from "firebase/firestore/lite";
 
-const columns = [
-  { id: "name", label: "Name", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
-  {
-    id: "population",
-    label: "Population",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "size",
-    label: "Size\u00a0(km\u00b2)",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "density",
-    label: "Density",
-    minWidth: 170,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
-];
-
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-];
+const collectName = "Account";
+const docsCollectRef = collection(firestore, collectName);
 
 function StickyHeadTable() {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [documents, setDocuments] = useState([]);
+  console.log(documents)
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -59,6 +26,20 @@ function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  const readDocs = async () => {
+    let array = [];
+    const querySnapshot = await getDocs(docsCollectRef);
+    // console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      // console.log(doc)
+      array.push({ ...doc.data(), id: doc.id });
+    });
+    setDocuments(array);
+  };
+
+  useEffect(() => {
+    readDocs();
+  }, []);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -73,38 +54,50 @@ function StickyHeadTable() {
               </TableCell>
               <TableCell
                 style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
-               
               >
                 Name
               </TableCell>
               <TableCell
                 style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
-                
               >
                 CNIC
               </TableCell>
               <TableCell
                 style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
-                
               >
                 Account Number
               </TableCell>
               <TableCell
                 style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
-               
+              >
+                Branch Code
+              </TableCell>
+              <TableCell
+                style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
               >
                 Balance
               </TableCell>
               <TableCell
                 style={{ backgroundColor: "rgba(33,37,41)", color: "white" }}
-             
               >
                 Action
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {documents.map((item,index) => {
+              return (
+                <TableRow key={item.id}>
+                  <TableCell>{index}</TableCell>
+                  <TableCell>{item.fullName}</TableCell>
+                  <TableCell>{item.cnic}</TableCell>
+                  <TableCell>{item.accountNumber}</TableCell>
+                  <TableCell>{item.branch}</TableCell>
+                  <TableCell>{item.intialDeposit}</TableCell>
+                </TableRow>
+              );
+            })}
+            {/* {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
@@ -121,19 +114,10 @@ function StickyHeadTable() {
                     })}
                   </TableRow>
                 );
-              })}
+              })} */}
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </Paper>
   );
 }
