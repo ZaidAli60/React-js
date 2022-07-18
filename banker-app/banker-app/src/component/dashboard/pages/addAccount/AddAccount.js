@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -19,6 +18,7 @@ const collectName = "Account";
 const docsCollectRef = collection(firestore, collectName);
 function AddAccount() {
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const [state, setState] = useState({
     fullName: "",
     cnic: "",
@@ -40,6 +40,7 @@ function AddAccount() {
   };
 
   const createDocs = async (e) => {
+    setisLoading(true)
     e.preventDefault();
     const formData = state;
     if (state.cnic.length !== 13) {
@@ -54,7 +55,7 @@ function AddAccount() {
           draggable: true,
           progress: undefined,
         }
-      );
+        );
     }
     if (state.accountNumber.length !== 9) {
       return toast.error(
@@ -68,10 +69,10 @@ function AddAccount() {
           draggable: true,
           progress: undefined,
         }
-      );
-    }
-    if (state.intialDeposit < 500) {
-      return toast.error(
+        );
+      }
+      if (state.intialDeposit < 500) {
+        return toast.error(
         `Your Initial Deposit number ${state.intialDeposit.length} is not valid. Please enter a Initial Deposit`,
         {
           position: "bottom-left",
@@ -96,12 +97,12 @@ function AddAccount() {
           draggable: true,
           progress: undefined,
         }
-      );
-    }
-    try {
-      const docRef = await addDoc(docsCollectRef, formData);
-      setState({
-        fullName: "",
+        );
+      }
+      try {
+        const docRef = await addDoc(docsCollectRef, formData);
+        setState({
+          fullName: "",
         cnic: "",
         accountNumber: "",
         chooseAccount: "",
@@ -129,10 +130,9 @@ function AddAccount() {
         progress: undefined,
       });
     }
+    setisLoading(false)
   };
-
   
-
   return (
     <Box sx={{ p: 3 }}>
       <Box>
@@ -255,7 +255,12 @@ function AddAccount() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleClose} color="error">
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            color="error"
+            size="small"
+          >
             Cancel
           </Button>
           <div>
@@ -264,8 +269,16 @@ function AddAccount() {
               type="sumbit"
               sx={{ ml: 2 }}
               onClick={createDocs}
+              size="small"
             >
-              Create Account
+              {!isLoading ? (
+                "Add"
+              ) : (
+                <div
+                  className="spinner-border text-white spinner-border-sm"
+                  role="status"
+                ></div>
+              )}
             </Button>
           </div>
         </DialogActions>

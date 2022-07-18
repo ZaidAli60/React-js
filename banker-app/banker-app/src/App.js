@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <Authcontext>
         <Routers />
         <ToastContainer
           position="top-right"
@@ -21,7 +20,6 @@ function App() {
           draggable
           pauseOnHover
         />
-      </Authcontext>
     </div>
   );
 }

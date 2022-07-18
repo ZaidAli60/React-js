@@ -5,25 +5,25 @@ import LandingPages from "../landingpage/index";
 import Login from "./Login/Login";
 import Register from "./register/Register";
 import { Navigate } from "react-router-dom";
-import { Authcontext } from "../context/Authcontext";
 import DashboardRouting from "../dashboard/pages/DashboardRouting";
 import AdminDashboard from "../dashboard/layout/Dashboard"
+import  {useAuthContext} from '../context/Authcontext'
 
 function Routers() {
-  const { isAuthanticated } = useContext(Authcontext);
+  const {isAuthanticated} = useAuthContext()
   return (
     <BrowserRouter>
       <Routes>
      
         <Route path="/" element={<LandingPages />} />
-        {/* <Route
+        <Route
           path="/login"
           element={!isAuthanticated ? <Login /> : <Navigate to="/dashboard" />}
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/dashboard"
-          element={<PrivateRouting Component={Dashboard} />}
-        /> */}
+          element={<PrivateRouting Component={AdminDashboard} />}
+        />
         <Route
           path="/dashboard/*"
           element={<AdminDashboard />}

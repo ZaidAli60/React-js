@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { Authcontext } from "../../context/Authcontext";
+import { Authcontext, useAuthContext } from "../../context/Authcontext";
 import "./Navbar.css";
 import { Link as Scroll, animateScroll as scroll } from "react-scroll";
+import {signOut} from "firebase/auth";
+import {auth} from '../../config/firebase'
 
 function Navbar() {
-  const { isAuthanticated } = useContext(Authcontext);
+ const {user} = useAuthContext()
+
+ const handlerLogout = ()=>{
+  signOut(auth)
+  .then(()=>{
+    alert("logout")
+  }).catch((e)=>{
+   alert("error")
+  })
+ }
   return (
     <nav className="navbar sticky-top navigationBar  navbar-expand-lg bg-white ">
       <div className="container">
@@ -120,7 +131,7 @@ function Navbar() {
               </li>
 
               <li className="nav-item">
-                {!isAuthanticated ? (
+                {!user.uid ? (
                   <Link
                     to="/login"
                     className="btn fw-bold  text-white text-uppercase "
@@ -132,9 +143,9 @@ function Navbar() {
                     Login
                   </Link>
                 ) : (
-                  <Link className="nav-link" to="/dashboard">
-                    Dashboard
-                  </Link>
+                  <button className="nav-link btn bg-danger text-white text-center" onClick={handlerLogout}>
+                    Logout
+                  </button>
                 )}
               </li>
             </ul>

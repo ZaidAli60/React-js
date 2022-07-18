@@ -4,22 +4,23 @@ import { Link } from "react-router-dom";
 import { ImFacebook } from "react-icons/im";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
-import { Authcontext } from "../../context/Authcontext";
+import { useAuthContext } from "../../context/Authcontext";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import {auth} from '../../config/firebase'
+
 
 
 function Login() {
-  const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
-
+let Navigate = useNavigate()
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
     
-    const auth = getAuth();
+  
     signInWithEmailAndPassword(auth, userName, password)
     .then((userCredential) => {
       // Signed in
@@ -35,8 +36,7 @@ function Login() {
       });
       setuserName("")
       setpassword("")
-      
-      setisAuthanticated(true);
+      Navigate("/dashboard")
       })
       .catch((error) => {
         const errorCode = error.code;

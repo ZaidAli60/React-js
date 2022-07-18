@@ -30,6 +30,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "../layout/Dashboard";
 import AddAccount from "../pages/addAccount/AddAccount";
 import Transaction from "../pages/transaction/Transaction";
+import Home from "../pages/Home/Home";
 
 const drawerWidth = 240;
 
@@ -96,12 +97,13 @@ export default function Dashboar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    // <div>
-    //   <h1>Dashboard page</h1>
-    //   <button onClick={logoutHandler} className="btn bg-danger text-white">
-    //     Logout Page
-    //   </button>
-    // </div>
+    <>
+    <div>
+      <h1>Dashboard page</h1>
+      <button onClick={logoutHandler} className="btn bg-danger text-white">
+        Logout 
+      </button>
+    </div>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
@@ -112,7 +114,7 @@ export default function Dashboar(props) {
           // backgroundColor: "rgba(33,37,41)",
           backgroundColor: "white",
         }}
-      >
+        >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -137,7 +139,7 @@ export default function Dashboar(props) {
             aria-haspopup="true"
             onClick={handleMenu}
             color="primary"
-          >
+            >
             <MoreIcon />
           </IconButton>
           <Menu
@@ -164,7 +166,7 @@ export default function Dashboar(props) {
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
-      >
+        >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
@@ -206,40 +208,27 @@ export default function Dashboar(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           paddingTop: "64px",
         }}
-      >
+        >
         <Routes>
           <Route path="/">
-            <Route index element={<h1>asd</h1>} />
+            <Route index element={<Home />} />
             <Route path="transaction" element={<Transaction />} />
             <Route path="addaccount" element={<AddAccount />} />
           </Route>
         </Routes>
-        {/* <Toolbar /> */}
-        {/* <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography> */}
+    
       </Box>
     </Box>
+</>
   );
 }
 
 // ResponsiveDrawer.propTypes = {
-// /**
-//  * Injected by the documentation to work in an iframe.
-//  * You won't need it on your project.
-//  */
-// window: PropTypes.func,
-
-// }
+  // /**
+  //  * Injected by the documentation to work in an iframe.
+  //  * You won't need it on your project.
+  //  */
+  // window: PropTypes.func,
+  
+  // }
+  
