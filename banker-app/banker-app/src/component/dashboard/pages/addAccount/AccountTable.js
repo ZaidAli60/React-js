@@ -143,8 +143,8 @@ function StickyHeadTable() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <WithDraw />
-            <Deposit />
+            <WithDraw  singledoc={singledoc} />
+            <Deposit singledoc={singledoc}  />
           </DialogActions>
         </Dialog>
       </div>

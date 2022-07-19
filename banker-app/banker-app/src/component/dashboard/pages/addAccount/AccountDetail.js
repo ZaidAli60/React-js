@@ -8,7 +8,6 @@ import Paper from "@mui/material/Paper";
 
 function AccountDetail(props) {
   const { singledoc } = props;
-  console.log(singledoc);
   return (
     <div style={{width:"300px"}}>
       <TableContainer component={Paper}>
