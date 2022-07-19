@@ -17,6 +17,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useGolbalContext } from "../../../context/AccountsContext";
 import AccountDetail from "./AccountDetail";
 import WithDraw from "./WithDraw";
+import Deposit from "./Deposit";
 
 function StickyHeadTable() {
   const { documents, setDocuments, deleteDocument } = useGolbalContext();
@@ -142,11 +143,8 @@ function StickyHeadTable() {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-           
             <WithDraw />
-            <Button onClick={handleClose} variant="contained">
-              Deposit
-            </Button>
+            <Deposit />
           </DialogActions>
         </Dialog>
       </div>
