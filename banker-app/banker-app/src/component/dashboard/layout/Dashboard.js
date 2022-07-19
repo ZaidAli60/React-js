@@ -27,7 +27,6 @@ import Menu from "@mui/material/Menu";
 import NavLinklist from "./NavLinkConfig";
 import { Link, Link as LinkRouter, useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../layout/Dashboard";
 import AddAccount from "../pages/addAccount/AddAccount";
 import Transaction from "../pages/transaction/Transaction";
 import Home from "../pages/Home/Home";
@@ -98,12 +97,7 @@ export default function Dashboar(props) {
 
   return (
     <>
-    <div>
-      <h1>Dashboard page</h1>
-      <button onClick={logoutHandler} className="btn bg-danger text-white">
-        Logout 
-      </button>
-    </div>
+   
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
@@ -111,7 +105,6 @@ export default function Dashboar(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          // backgroundColor: "rgba(33,37,41)",
           backgroundColor: "white",
         }}
         >
