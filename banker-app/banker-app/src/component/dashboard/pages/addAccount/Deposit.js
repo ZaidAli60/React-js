@@ -5,11 +5,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Grid, TextField } from "@mui/material";
+import { writeBatch, doc } from "firebase/firestore/lite";
+import {firestore} from "../../../config/firebase";
 
-function Deposit() {
+function Deposit(props) {
+  const { singledoc } = props;
   const [open, setOpen] = React.useState(false);
   const [depositAmount, setdepositAmount] = useState("");
   const [depositDescription, setdepositDescription] = useState("");
+  const [deposit, setdeposit] = useState("");
+
   console.log(depositDescription);
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +22,24 @@ function Deposit() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+  const handlewithdraw = async () => {
+    if (depositAmount <= singledoc.intialDeposit) {
+      let amountAfterWithdraw =
+        Number(singledoc.intialDeposit) + Number(depositAmount);
+
+      // Get a new write batch
+      const batch = writeBatch(firestore);
+      const accountRef = doc(firestore, "Account", singledoc.id);
+      batch.update(accountRef, { intialDeposit: amountAfterWithdraw });
+
+      // const transactionRef = doc(firestore, "transactions", transactionId);
+      // batch.set(transactionRef, tranctiondata)
+      // Commit the batch
+      await batch.commit();
+    } else {
+      alert("add valid amount");
+    }
   };
   return (
     <div>
@@ -68,7 +91,7 @@ function Deposit() {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="contained">
+          <Button onClick={handlewithdraw} variant="contained">
             Deposit
           </Button>
         </DialogActions>
