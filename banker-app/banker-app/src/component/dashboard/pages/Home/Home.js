@@ -9,8 +9,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { MdOutlinePreview, MdTransform } from "react-icons/md";
 import { Grid } from "@mui/material";
-import { Link as LinkRouter} from "react-router-dom";
-import {useGolbalContext} from '../../../context/AccountsContext'
+import { Link as LinkRouter } from "react-router-dom";
+import { useGolbalContext } from "../../../context/AccountsContext";
 const bull = (
   <Box
     component="span"
@@ -20,8 +20,7 @@ const bull = (
   </Box>
 );
 function Home() {
-  const {documents}= useGolbalContext()
-  console.log(documents);
+  const { documents, transactionData } = useGolbalContext();
   return (
     <Box sx={{ p: 1 }}>
       <Box>
@@ -30,7 +29,7 @@ function Home() {
         </Typography>
       </Box>
       <Grid container spacing={2}>
-        <Grid item lg={4}>
+        <Grid item lg={6} md={6} sx={12} xs={12}>
           <Card sx={{ backgroundColor: "#2196f3", my: 2 }}>
             <CardContent>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -60,7 +59,7 @@ function Home() {
                 }}
                 component="div"
               >
-              {documents.length}
+                {documents.length}
               </Typography>
               <Typography variant="h5" sx={{ color: "white", mt: 2 }} paragraph>
                 Total Account
@@ -70,14 +69,19 @@ function Home() {
                 Start from 1 jan 2022
               </Typography>
             </CardContent>
-            <div className="d-flex justify-content-center py-1"> 
-            <LinkRouter to="addaccount" className="btn bg-white" variant="outline" >+ Add New Account</LinkRouter>
-
+            <div className="d-flex justify-content-center py-1">
+              <LinkRouter
+                to="addaccount"
+                className="btn bg-white"
+                variant="outline"
+              >
+                + Add New Account
+              </LinkRouter>
             </div>
           </Card>
         </Grid>
 
-        <Grid item lg={4}>
+        <Grid item lg={6} md={6} sx={12} xs={12}>
           <Card sx={{ my: 2 }}>
             <CardContent>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -108,7 +112,7 @@ function Home() {
                 }}
                 component="div"
               >
-                0
+                {transactionData.length}
               </Typography>
               <Typography variant="h5" sx={{ mt: 2 }} paragraph>
                 Total Transactions
@@ -118,8 +122,14 @@ function Home() {
                 Start from 1 jan 2022
               </Typography>
             </CardContent>
-            <div className="d-flex justify-content-center py-1"> 
-            <LinkRouter to="transactions" className="btn bg-white" variant="outline" >+ All View Account</LinkRouter>
+            <div className="d-flex justify-content-center py-1">
+              <LinkRouter
+                to="transactions"
+                className="btn bg-white"
+                variant="outline"
+              >
+                + All View Account
+              </LinkRouter>
             </div>
           </Card>
         </Grid>

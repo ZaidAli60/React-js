@@ -5,17 +5,15 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Grid, TextField } from "@mui/material";
-import { writeBatch, doc } from "firebase/firestore/lite";
-import {firestore} from "../../../config/firebase";
+import { writeBatch, doc, serverTimestamp } from "firebase/firestore/lite";
+import { firestore } from "../../../config/firebase";
 
 function Deposit(props) {
   const { singledoc } = props;
   const [open, setOpen] = React.useState(false);
   const [depositAmount, setdepositAmount] = useState("");
   const [depositDescription, setdepositDescription] = useState("");
-  const [deposit, setdeposit] = useState("");
 
-  console.log(depositDescription);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -23,8 +21,22 @@ function Deposit(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const handlewithdraw = async () => {
-    if (depositAmount <= singledoc.intialDeposit) {
+  const handleDeposit = async () => {
+    if (depositAmount < 5000) {
+      let transactionId = new Date().getTime();
+      transactionId = transactionId.toString();
+      let type = "credit";
+      let tranctiondata = {
+        accountNumber: singledoc.accountNumber,
+        branch: singledoc.branch,
+        cnic: singledoc.cnic,
+        type,
+        intialDeposit: depositAmount,
+        fullName: singledoc.fullName,
+        Description: "initial Deposit",
+        createday: serverTimestamp(),
+        useruid: singledoc.useruid,
+      };
       let amountAfterWithdraw =
         Number(singledoc.intialDeposit) + Number(depositAmount);
 
@@ -33,10 +45,10 @@ function Deposit(props) {
       const accountRef = doc(firestore, "Account", singledoc.id);
       batch.update(accountRef, { intialDeposit: amountAfterWithdraw });
 
-      // const transactionRef = doc(firestore, "transactions", transactionId);
-      // batch.set(transactionRef, tranctiondata)
-      // Commit the batch
+      const transactionRef = doc(firestore, "transactions", transactionId);
+      batch.set(transactionRef, tranctiondata);
       await batch.commit();
+      setOpen(false);
     } else {
       alert("add valid amount");
     }
@@ -91,7 +103,7 @@ function Deposit(props) {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handlewithdraw} variant="contained">
+          <Button onClick={handleDeposit} variant="contained">
             Deposit
           </Button>
         </DialogActions>

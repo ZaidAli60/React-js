@@ -1,36 +1,47 @@
 import React, { useState } from "react";
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField, Box } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { writeBatch, doc } from "firebase/firestore/lite";
+import { writeBatch, doc,serverTimestamp } from "firebase/firestore/lite";
 import { firestore } from "../../../config/firebase";
 
 function WithDraw(props) {
   const { singledoc } = props;
-  console.log(singledoc);
   const [open, setOpen] = React.useState(false);
   const [withDrawAmount, setwithDrawAmount] = useState("");
   const [description, setdescription] = useState("");
   const handlewithdraw = async () => {
-    if (withDrawAmount <= singledoc.intialDeposit) {
+
+      let WithDrawId = new Date().getTime();
+      WithDrawId = WithDrawId.toString();
       let amountAfterWithdraw =
-        Number(singledoc.intialDeposit) - Number(withDrawAmount);
+      Number(singledoc.intialDeposit) - Number(withDrawAmount);
+      let type = "Debit";
+      let WithDrawData = {
+        accountNumber: singledoc.accountNumber,
+        branch: singledoc.branch,
+        cnic: singledoc.cnic,
+        type,
+        intialDeposit: withDrawAmount,
+        fullName: singledoc.fullName,
+        createday: serverTimestamp(),
+        useruid: singledoc.useruid,
+      };
+    
 
       // Get a new write batch
       const batch = writeBatch(firestore);
       const accountRef = doc(firestore, "Account", singledoc.id);
       batch.update(accountRef, { intialDeposit: amountAfterWithdraw });
 
-      // const transactionRef = doc(firestore, "transactions", transactionId);
-      // batch.set(transactionRef, tranctiondata)
+      const transactionRef = doc(firestore, "transactions", WithDrawId);
+      batch.set(transactionRef, WithDrawData)
       // Commit the batch
       await batch.commit();
-    } else {
-      alert("add valid amount");
-    }
-  };
+      setOpen(false)
+    } 
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -61,6 +72,7 @@ function WithDraw(props) {
         >
           Withdraw Amount
         </DialogTitle>
+
         <DialogContent>
           <Grid container spacing={2} direction="column" sx={{ py: 4 }}>
             <Grid item lg={12}>
@@ -70,6 +82,7 @@ function WithDraw(props) {
                 variant="outlined"
                 size="small"
                 type="number"
+                required
                 value={withDrawAmount}
                 onChange={(e) => setwithDrawAmount(e.target.value)}
               />
@@ -81,17 +94,19 @@ function WithDraw(props) {
                 label="Description*"
                 variant="outlined"
                 size="small"
+                required
+                autofoucs
                 value={description}
                 onChange={(e) => setdescription(e.target.value)}
               />
             </Grid>
           </Grid>
+          <DialogActions>
+            <Button onClick={handlewithdraw} variant="contained">
+              WithDraw
+            </Button>
+          </DialogActions>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handlewithdraw} variant="contained">
-            WithDraw
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

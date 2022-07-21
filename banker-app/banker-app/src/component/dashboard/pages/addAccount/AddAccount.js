@@ -13,10 +13,12 @@ import Select from "@mui/material/Select";
 import StickyHeadTable from "./AccountTable";
 import { firestore } from "../../../config/firebase";
 import { collection, addDoc } from "firebase/firestore/lite";
+import {useAuthContext} from '../../../context/Authcontext'
 import { toast } from "react-toastify";
 const collectName = "Account";
 const docsCollectRef = collection(firestore, collectName);
 function AddAccount() {
+const {user} = useAuthContext()
   const [open, setOpen] = React.useState(false);
   const [isLoading, setisLoading] = useState(false);
   const [state, setState] = useState({
@@ -42,7 +44,8 @@ function AddAccount() {
   const createDocs = async (e) => {
     setisLoading(true)
     e.preventDefault();
-    const formData = state;
+    const formData = {...state, useruid:user.uid};
+    console.log(formData)
     if (state.cnic.length !== 13) {
       return toast.error(
         `Your CNIC number ${state.cnic.length} is not valid. Please enter a valid CNIC number`,
@@ -102,7 +105,7 @@ function AddAccount() {
       try {
         const docRef = await addDoc(docsCollectRef, formData);
         setState({
-          fullName: "",
+        fullName: "",
         cnic: "",
         accountNumber: "",
         chooseAccount: "",
@@ -120,7 +123,7 @@ function AddAccount() {
       });
     } catch (e) {
       console.error("Error adding document: ", e);
-      toast.error("Something went wron", {
+      toast.error("Something went wrong", {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
