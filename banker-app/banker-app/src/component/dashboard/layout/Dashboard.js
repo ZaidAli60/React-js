@@ -37,7 +37,6 @@ export default function Dashboar(props) {
   const { isAuthanticated, setisAuthanticated } = useContext(Authcontext);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  console.log(isAuthanticated);
   const navigate = useNavigate();
   const logoutHandler = (e) => {
     e.preventDefault();
@@ -80,7 +79,7 @@ export default function Dashboar(props) {
                     <ListItemIcon sx={{ color: "white" }}>
                       {item.icon}
                     </ListItemIcon>
-                    <ListItemText primary={item.text} />
+                    <ListItemText primary={item.text} sx={{ color: "white" }} />
                   </ListItemButton>
                 </ListItem>
               </Link>
@@ -97,131 +96,128 @@ export default function Dashboar(props) {
 
   return (
     <>
-   
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "white",
-        }}
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            ml: { sm: `${drawerWidth}px` },
+            backgroundColor: "white",
+          }}
         >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon style={{ color: "black" }} />
-          </IconButton>
-
-          <Box style={{ display: "flex", flexGrow: "1" }}>
-            <Search />
-          </Box>
-          <Notification />
-          <Profile />
-
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="primary"
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
             >
-            <MoreIcon />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
+              <MenuIcon style={{ color: "black" }} />
+            </IconButton>
+
+            <Box style={{ display: "flex", flexGrow: "1" }}>
+              <Search />
+            </Box>
+            <Notification />
+            <Profile />
+
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="primary"
+            >
+              <MoreIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+            </Menu>
+          </Toolbar>
+        </AppBar>
+        <Box
+          component="nav"
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          aria-label="mailbox folders"
+        >
+          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
             }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
             }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-          </Menu>
-        </Toolbar>
-      </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-        >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+            {drawer}
+          </Drawer>
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box
+          component="main"
           sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            paddingTop: "64px",
           }}
         >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth,
-            },
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home />} />
+              <Route path="transactions" element={<Transaction />} />
+              <Route path="addaccount" element={<AddAccount />} />
+            </Route>
+          </Routes>
+        </Box>
       </Box>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          paddingTop: "64px",
-        }}
-        >
-        <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="transaction" element={<Transaction />} />
-            <Route path="addaccount" element={<AddAccount />} />
-          </Route>
-        </Routes>
-    
-      </Box>
-    </Box>
-</>
+    </>
   );
 }
 
 // ResponsiveDrawer.propTypes = {
-  // /**
-  //  * Injected by the documentation to work in an iframe.
-  //  * You won't need it on your project.
-  //  */
-  // window: PropTypes.func,
-  
-  // }
-  
+// /**
+//  * Injected by the documentation to work in an iframe.
+//  * You won't need it on your project.
+//  */
+// window: PropTypes.func,
+
+// }

@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { Authcontext, useAuthContext } from "../../context/Authcontext";
 import "./Navbar.css";
 import { Link as Scroll, animateScroll as scroll } from "react-scroll";
-import {signOut} from "firebase/auth";
-import {auth} from '../../config/firebase'
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
 
 function Navbar() {
- const {user} = useAuthContext()
+  const { user, isAuthanticated } = useAuthContext();
 
- const handlerLogout = ()=>{
-  signOut(auth)
-  .then(()=>{
-    alert("logout")
-  }).catch((e)=>{
-   alert("error")
-  })
- }
+  const handlerLogout = () => {
+    signOut(auth)
+      .then(() => {
+        alert("logout");
+      })
+      .catch((e) => {
+        alert("error");
+      });
+  };
   return (
     <nav className="navbar sticky-top navigationBar  navbar-expand-lg bg-white ">
       <div className="container">
@@ -129,6 +130,21 @@ function Navbar() {
                   Contact
                 </Scroll>
               </li>
+                <li className="nav-item">
+                  <Link
+                    activeClass="active"
+                    className="nav-link "
+                    to="dashboard"
+                    spy={true}
+                    smooth={true}
+                    offset={-50}
+                    duration={500}
+                  >
+                    Dashboard
+                  </Link>
+                </li>
+              
+            
 
               <li className="nav-item">
                 {!user.uid ? (
@@ -143,7 +159,10 @@ function Navbar() {
                     Login
                   </Link>
                 ) : (
-                  <button className="nav-link btn bg-danger text-white text-center" onClick={handlerLogout}>
+                  <button
+                    className="nav-link btn bg-danger text-white text-center"
+                    onClick={handlerLogout}
+                  >
                     Logout
                   </button>
                 )}

@@ -23,10 +23,16 @@ function Home() {
   const { documents, transactionData } = useGolbalContext();
   return (
     <Box sx={{ p: 1 }}>
-      <Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           Dashboard
         </Typography>
+        <LinkRouter to="/"
+          className="btn text-white"
+          style={{ backgroundColor: "#2196f3" }}
+        >
+          Go Back Home Page
+        </LinkRouter>
       </Box>
       <Grid container spacing={2}>
         <Grid item lg={6} md={6} sx={12} xs={12}>
