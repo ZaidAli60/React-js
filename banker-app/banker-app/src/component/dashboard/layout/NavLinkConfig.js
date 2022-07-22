@@ -12,7 +12,7 @@ const NavLinklist = [
   {
     id: 1,
     text: "Transaction",
-    path:"transaction",
+    path:"transactions",
     icon: <MdTransform />,
   },
   {
