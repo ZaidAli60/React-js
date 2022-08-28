@@ -123,7 +123,7 @@ export default function Home({navigation}) {
           <View>
             <Image
               source={{
-                uri: 'https://icms-image.slatic.net/images/ims-web/c423e8db-cb5f-44ec-baa8-0e5941de7971.jpg_1200x1200.jpg',
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqguznmFobK0_MLU-BSoZuxdcyeLxsLFDoEQ&usqp=CAU',
               }}
               alt="slider"
               style={{height: '100%'}}
@@ -132,7 +132,16 @@ export default function Home({navigation}) {
           <View>
             <Image
               source={{
-                uri: 'https://daraz-app-73432.web.app/static/media/pic4.1e109436af5b9878655c.jpg',
+                uri: 'https://stylesatlife.com/wp-content/uploads/2021/02/Flat-roof-house-designs-2.jpg.webp',
+              }}
+              alt="slider"
+              style={{height: '100%'}}
+            />
+          </View>
+          <View>
+            <Image
+              source={{
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzrCZZDDFYuYI2O5TL_SZk2JhOpiqKmQJzMw&usqp=CAU',
               }}
               alt="slider"
               style={{height: '100%'}}
@@ -144,10 +153,7 @@ export default function Home({navigation}) {
         <Text style={Styles.heading} size="md">
           Just For You
         </Text>
-
-      
       </Box>
-   
     </ScrollView>
   );
 }
