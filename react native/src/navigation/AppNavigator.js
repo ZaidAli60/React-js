@@ -58,7 +58,7 @@ const MyTabs = () => {
         component={Carts}
         
         options={{
-          tabBarLabel: 'Contact',
+          tabBarLabel: 'Cart',
           headerShown: false,
 
           tabBarIcon: ({color, size}) => (

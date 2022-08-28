@@ -15,11 +15,11 @@ import {
   Stack,
   Heading,
   HStack,
-  Button
+  Button,
 } from 'native-base';
 import {useReadDataContext} from '../../../context/ReadContext';
 import {useCartContext} from '../../../context/CartContext';
-export default function NewPost({product}) {
+export default function NewPost() {
   const {documents} = useReadDataContext();
   const {dispatch} = useCartContext();
   console.log(documents);
@@ -29,12 +29,13 @@ export default function NewPost({product}) {
     <ScrollView>
       {documents.map((item, index) => {
         return (
-          <Box>
+          <Box
+            style={{
+              paddingTop: 30,
+              paddingBottom: 30,
+            }}
+            key={item.id}>
             <Box
-              style={{
-                paddingTop: 30,
-                paddingBottom: 30,
-              }}
               maxW="80"
               rounded="lg"
               overflow="hidden"
@@ -119,9 +120,12 @@ export default function NewPost({product}) {
                 </HStack>
                 <Box>
                   <Button
+                    onPress={() => {
+                      dispatch({type: 'ADD_TO_CART', payload: item});
+                    }}
                     style={{
                       backgroundColor: '#0d6efd',
-                      color:"white"
+                      color: 'white',
                     }}>
                     Buy Now
                   </Button>
