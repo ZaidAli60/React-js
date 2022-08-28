@@ -76,7 +76,7 @@ export default function About() {
 
   return (
     <View style={Styles.flexContainer}>
-      <Heading>Add New Products</Heading>
+      <Heading>Add New Post</Heading>
 
       <FormControl>
         <Stack
@@ -147,7 +147,7 @@ export default function About() {
         </Box>
         <Box>
           <Button onPress={submitHandler}>
-            <Text style={{color: 'white'}}>Add Product </Text>
+            <Text style={{color: 'white'}}>Add Post </Text>
           </Button>
         </Box>
       </FormControl>

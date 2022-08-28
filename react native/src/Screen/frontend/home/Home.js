@@ -13,9 +13,7 @@ import {
   Heading,
 } from 'native-base';
 import Swiper from 'react-native-swiper';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Products from './Products';
 import auth from '@react-native-firebase/auth';
 import {useAuthContext} from '../../../context/AuthContext';
 import {useCartContext} from '../../../context/CartContext';
@@ -64,7 +62,7 @@ export default function Home({navigation}) {
                   color="muted.400"
                 />
               }
-              variant="filled"
+              // variant="filled"
               placeholder="Search"
             />
           </Stack>
@@ -72,7 +70,7 @@ export default function Home({navigation}) {
         <HStack>
           <Box>
             <Badge // bg="red.400"
-              colorScheme="danger"
+              colorScheme="primary"
               rounded="full"
               mb={-4}
               mr={-2}
@@ -91,10 +89,10 @@ export default function Home({navigation}) {
               }}
               icon={
                 <Icon
-                  as={FontAwesome5Icon}
-                  name="cart-arrow-down"
+                  as={MaterialIcons}
+                  name="post-add"
                   size="md"
-                  color="#f75606"
+                  color="#0d6efd"
                 />
               }
             />
