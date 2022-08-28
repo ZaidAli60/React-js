@@ -16,9 +16,9 @@ import {
 } from 'native-base';
 import {useToast} from 'native-base';
 import auth from '@react-native-firebase/auth';
-import { useAuthContext } from '../../../context/AuthContext';
+import {useAuthContext} from '../../../context/AuthContext';
 export default function Register() {
-  const {dispatch}= useAuthContext()
+  const {dispatch} = useAuthContext();
   const toast = useToast();
   const [state, setState] = useState({
     email: '',
@@ -41,7 +41,7 @@ export default function Register() {
           placement: 'top',
           description: `${state.email} User has been sucessfuly signed in!`,
         });
-        dispatch({type:"LOGOUT",payload:{user}})
+        dispatch({type: 'LOGOUT', payload: {user}});
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
@@ -66,11 +66,11 @@ export default function Register() {
       <Center w="100%">
         <Image
           source={{
-            uri: 'https://icms-image.slatic.net/images/ims-web/3ae67ef5-e5f6-42c3-9a40-993ef9a7bfae.png',
+            uri: 'https://www.seekpng.com/png/detail/114-1140446_real-estate-logo-real-estate-pinterest-logos-real.png',
           }}
           alt="Alternate Text"
           size="xs"
-          style={{width: 100, marginTop: 20}}
+          style={{width: 100, marginTop: 40, height: 70}}
         />
         <Box safeArea p="2" w="90%" maxW="290" py="8">
           <Heading
@@ -130,6 +130,6 @@ export default function Register() {
 
 const Styles = StyleSheet.create({
   buttonColor: {
-    backgroundColor: '#f75606',
+    backgroundColor: '#0d6efd',
   },
 });
