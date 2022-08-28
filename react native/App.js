@@ -12,7 +12,7 @@ export default function App() {
       <CartProvider>
         <ReadContext>
           <NativeBaseProvider theme={customTheme}>
-            <StatusBar barStyle={'light-content'} backgroundColor="#f75606" />
+            <StatusBar barStyle={'light-content'} backgroundColor="#0d6efd" />
             <AppNavigator />
           </NativeBaseProvider>
         </ReadContext>
