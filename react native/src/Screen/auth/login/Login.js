@@ -60,11 +60,11 @@ export default function Login({navigation}) {
       <Center w="100%">
         <Image
           source={{
-            uri: 'https://icms-image.slatic.net/images/ims-web/3ae67ef5-e5f6-42c3-9a40-993ef9a7bfae.png',
+            uri: 'https://www.seekpng.com/png/detail/114-1140446_real-estate-logo-real-estate-pinterest-logos-real.png',
           }}
           alt="Alternate Text"
           size="xs"
-          style={{width: 100, marginTop: 20}}
+          style={{width: 100, marginTop: 40,height:70,}}
         />
         <Box safeArea p="2" py="8" w="90%" maxW="290">
           <Heading
@@ -129,10 +129,11 @@ export default function Login({navigation}) {
               </Text>
               <Link
                 _text={{
-                  color: '#f75606',
+                  color: '#0d6efd',
                   fontWeight: 'medium',
                   fontSize: 'sm',
                 }}
+               
                 onPress={() => navigation.navigate('Register')}>
                 Sign Up
               </Link>
@@ -146,6 +147,6 @@ export default function Login({navigation}) {
 
 const Styles = StyleSheet.create({
   buttonColor: {
-    backgroundColor: '#f75606',
+    backgroundColor: '#0d6efd',
   },
 });

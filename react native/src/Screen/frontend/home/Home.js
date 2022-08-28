@@ -145,9 +145,7 @@ export default function Home({navigation}) {
           Just For You
         </Text>
 
-        <Box>
-          <Products />
-        </Box>
+      
       </Box>
    
     </ScrollView>
