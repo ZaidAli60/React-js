@@ -17,6 +17,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import auth from '@react-native-firebase/auth';
 import {useAuthContext} from '../../../context/AuthContext';
 import {useCartContext} from '../../../context/CartContext';
+import NewPost from './NewPosts';
 export default function Home({navigation}) {
   const {dispatch, isAuthenticated} = useAuthContext();
   const {
@@ -151,6 +152,9 @@ export default function Home({navigation}) {
         <Text style={Styles.heading} size="md">
           Just For You
         </Text>
+        <Box>
+          <NewPost />
+        </Box>
       </Box>
     </ScrollView>
   );

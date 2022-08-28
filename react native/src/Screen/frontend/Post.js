@@ -25,17 +25,14 @@ export default function About() {
   const submitHandler = async () => {
     await storage()
       .ref(`images/${selectImage.fileName}`)
-      .putFile(selectImage.uri)
-      .then(async () => {
-        const url = await storage()
-          .ref(`images/${selectImage.fileName}`)
-          .getDownloadURL();
-        console.log(url);
-        setUrl(url);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+      .putFile(selectImage.uri);
+
+    const url = await storage()
+      .ref(`images/${selectImage.fileName}`)
+      .getDownloadURL();
+    console.log(url);
+    setUrl(url);
+
     const obj = {
       productTitle,
       category,

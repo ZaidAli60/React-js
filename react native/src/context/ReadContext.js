@@ -5,7 +5,7 @@ import {createContext} from 'react';
 const ReadDataContext = createContext();
 
 export default function ReadContext({children}) {
-  const [documents, setdocuments] = useState();
+  const [documents, setdocuments] = useState([]);
 
   const getData = () => {
     let array = [];

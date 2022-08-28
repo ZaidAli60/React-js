@@ -2,13 +2,14 @@ import {View, Text, Button, Image} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import About from '../Screen/frontend/About';
+import About from '../Screen/frontend/Post';
 import Contact from '../Screen/frontend/Contact';
 import Home from '../Screen/frontend/home/Home';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Carts from '../Screen/frontend/Carts';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialIconsIcon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Login from '../Screen/auth/login/Login';
 import Register from '../Screen/auth/register/Register';
 import {useAuthContext} from '../context/AuthContext';
@@ -34,9 +35,9 @@ const MyTabs = () => {
         component={About}
         options={{
           headerShown: false,
-          tabBarLabel: 'About',
+          tabBarLabel: 'Post',
           tabBarIcon: ({color, size}) => (
-            <FontAwesome5Icon name="user" color={color} size={size} />
+            <MaterialIcons name="post-add" color={color} size={size} />
           ),
         }}
       />

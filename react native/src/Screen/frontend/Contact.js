@@ -12,9 +12,9 @@ import {Box, Heading, ScrollView} from 'native-base';
 import {useReadDataContext} from '../../context/ReadContext';
 import {useCartContext} from '../../context/CartContext';
 export default function Contact({product}) {
-  const {documents} = useReadDataContext();
+  // const {documents} = useReadDataContext();
   const {dispatch} = useCartContext();
-  console.log(documents);
+  // console.log(documents);
   const cardGap = 15;
   const cardWidth = (Dimensions.get('window').width - cardGap * 3) / 2;
   return (
@@ -28,7 +28,7 @@ export default function Contact({product}) {
               flexWrap: 'wrap',
               justifyContent: 'center',
             }}>
-            {documents.map((item, index) => {
+            {/* {documents.map((item, index) => {
               return (
                 <View
                   key={item.id}
@@ -68,7 +68,7 @@ export default function Contact({product}) {
                   </View>
                 </View>
               );
-            })}
+            })} */}
           </Box>
         </Box>
       </View>
